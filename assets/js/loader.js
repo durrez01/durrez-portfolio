@@ -9,7 +9,9 @@ window.createStudioLoader=function({inspectLoading}={}){
   const target=document.querySelector('.wordmark .monogram');
   // The headline overlaps the flight; the identity types name first, then role.
   const BEATS={flight:.04,dock:1.02,headline:.12,headlineEnd:1.40,name:1.02,role:1.40};
-  const COUNTER={duration:.7};
+  // The count climbs at a fixed pace per unit so every number from 0 to 100 is
+  // painted; a floor keeps tiny credits from snapping.
+  const COUNTER={perStep:.03,minDuration:.35};
   const MONOGRAM={lettersEnd:1.18,dotStart:1.24,dotDuration:.34,settleHold:.18};
   // Two quiet crosses turn one at a time into n and v. The orange dot is held
   // back as a distinct final beat so every part of the identity is readable.
@@ -50,7 +52,7 @@ window.createStudioLoader=function({inspectLoading}={}){
     if(!complete){stamped=false;monogram.pause(MONOGRAM.lettersEnd*progress.n/100);}
     else if(!stamped){stamped=true;monogram.play(MONOGRAM.lettersEnd);}
   }
-  function credit(amount){if(closed)return;total=Math.min(100,total+amount);gsap.to(progress,{n:total,duration:COUNTER.duration,ease:'none',overwrite:true,onUpdate:paint,onComplete:paint});}
+  function credit(amount){if(closed)return 0;total=Math.min(100,total+amount);const duration=Math.max(COUNTER.minDuration,(total-progress.n)*COUNTER.perStep);gsap.to(progress,{n:total,duration,ease:'none',overwrite:true,onUpdate:paint,onComplete:paint});return duration;}
   function measure(){rect=target.getBoundingClientRect();from={x:innerWidth/2,y:innerHeight/2-18};endScale=rect.width/mark.offsetWidth;}
   function place(){const t=flight.t,scale=1+(endScale-1)*t;mark.style.transform=`translate3d(${from.x+(rect.x+rect.width/2-from.x)*t}px,${from.y+(rect.y+rect.height/2-from.y)*t}px,0) translate(-50%,-50%) scale(${scale})`;}
   function finish(){if(closed)return;closed=true;timeline?.kill();monogram.kill();gsap.killTweensOf(progress);for(const line of [name,role]){line.n=line.letters.length;type(line);}root.hidden=true;body.classList.remove('booting');body.dataset.boot='done';sections.forEach(el=>el.inert=false);removeEventListener('resize',onResize);done?.();}
@@ -58,12 +60,12 @@ window.createStudioLoader=function({inspectLoading}={}){
   addEventListener('resize',onResize);
   async function reveal({drop,complete,deep=false,inspectTimeline}){
     // The renderer's first uploaded frame is the final readiness milestone.
-    credit(100-total);
+    const countTail=credit(100-total);
     // Crosses and counter stay centred until N, V and the orange dot have all
     // resolved. A short still hold makes the completed identity unmistakable;
     // only that final mark is allowed to begin the shared-element flight.
     const resolveDuration=monogram.duration()-MONOGRAM.lettersEnd;
-    await new Promise(resolve=>gsap.delayedCall(COUNTER.duration+resolveDuration,resolve));
+    await new Promise(resolve=>gsap.delayedCall(countTail+resolveDuration,resolve));
     if(closed)return;
     monogram.pause(monogram.duration());
     root.dataset.phase='resolved';

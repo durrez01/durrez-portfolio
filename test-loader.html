@@ -1,0 +1,49 @@
+<!doctype html>
+<!-- Dev-only: proves the loader counter paints every integer from 0 to 100.
+     Run headless: chrome --headless --dump-dom --virtual-time-budget=20000 this file,
+     then read #verdict. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>loader counter test</title>
+<script src="assets/vendor/gsap.min.js"></script>
+</head>
+<body>
+<div id="studio-loader">
+  <div class="loader-mark">nv<span>.</span></div>
+  <div class="loader-progress"><span data-count>0</span></div>
+  <div role="progressbar" aria-valuenow="0"></div>
+  <div class="loader-veil"></div>
+</div>
+<header class="site-header"><span class="wordmark"><span class="monogram">nv.</span></span>
+  <span class="brand-lockup"><span class="artist-name">Durrez Ahmed</span><span class="artist-role">Software Developer</span></span>
+</header>
+<main></main>
+<footer class="site-footer"></footer>
+<pre id="verdict">pending</pre>
+<script src="assets/js/loader.js"></script>
+<script>
+const errors=[];addEventListener('error',e=>errors.push(String(e.message)));
+const seen=[];
+const countEl=document.querySelector('[data-count]');
+new MutationObserver(()=>{const v=Number(countEl.textContent);if(seen[seen.length-1]!==v)seen.push(v);}).observe(countEl,{childList:true,characterData:true,subtree:true});
+const loader=window.createStudioLoader();
+// Mimic main.js credit pattern: 3 fonts x6, 8 images x8, gallery 18, staggered.
+let t=100;
+for(let i=0;i<3;i++){setTimeout(()=>loader.credit(6),t);t+=120;}
+for(let i=0;i<8;i++){setTimeout(()=>loader.credit(8),t);t+=180;}
+setTimeout(()=>loader.credit(18),t+300);
+const deadline=Date.now()+15000;
+(function check(){
+  if(seen[seen.length-1]===100){
+    const missing=[];let prev=seen[0];
+    for(const v of seen.slice(1)){if(v-prev>1)for(let m=prev+1;m<v;m++)missing.push(m);prev=v;}
+    const monotonic=seen.every((v,i)=>i===0||v>=seen[i-1]);
+    document.getElementById('verdict').textContent=JSON.stringify({final:100,count:seen.length,monotonic,missing});
+  }else if(Date.now()>deadline){
+    document.getElementById('verdict').textContent=JSON.stringify({timeout:true,last:seen[seen.length-1],count:seen.length,gsap:typeof gsap,shown:countEl.textContent,errors});
+  }else setTimeout(check,100);
+})();
+</script>
+</body>
+</html>
