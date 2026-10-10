@@ -50,9 +50,11 @@
     root.dataset.dockMax='0.00';
   }
 
+  let lastRects=null;
   function setTargets(clientX){
     if(!enabled)return;
     const rects=items.map(state=>state.element.getBoundingClientRect());
+    lastRects=rects;
     items.forEach((state,index)=>{
       const rect=rects[index];
       const proximity=clamp(1-Math.abs(clientX-(rect.left+rect.width*.5))/options.proximity,0,1);
@@ -61,7 +63,7 @@
       state.element.dataset.dockNear=influence>.08?'true':'false';
     });
     pointerActive=true;
-    dirty=true;
+    dirty=true;wake();
     root.dataset.dockState='active';
   }
 
@@ -74,16 +76,17 @@
       state.element.dataset.dockNear=state.target>.08?'true':'false';
     });
     pointerActive=false;
-    dirty=true;
+    dirty=true;wake();
     root.dataset.dockState='focus';
   }
 
   function reset(){
     pointerActive=false;
-    dirty=true;
+    dirty=true;wake();
     items.forEach(state=>{state.target=0;state.element.dataset.dockNear='false';});
   }
 
+  let running=false;
   function draw(){
     if(enabled&&dirty){
       let moving=false,maxValue=0;
@@ -98,14 +101,16 @@
       root.dataset.dockMax=maxValue.toFixed(2);
       if(!moving){dirty=false;if(items.every(state=>state.target===0))root.dataset.dockState='idle';}
     }
-    frame=requestAnimationFrame(draw);
+    // The loop sleeps once settled and wakes on the next interaction.
+    if(enabled&&dirty)frame=requestAnimationFrame(draw);else running=false;
   }
+  function wake(){if(!running){running=true;frame=requestAnimationFrame(draw);}}
 
   const onPointerMove=event=>setTargets(event.clientX);
   const onWindowPointerMove=event=>{
     if(!pointerActive)return;
     const rootRect=root.getBoundingClientRect();
-    const itemRects=items.map(state=>state.element.getBoundingClientRect());
+    const itemRects=lastRects||[];
     const bottom=Math.max(rootRect.bottom,...itemRects.map(rect=>rect.bottom));
     if(event.clientX<rootRect.left||event.clientX>rootRect.right||event.clientY<rootRect.top||event.clientY>bottom)reset();
   };
@@ -124,7 +129,6 @@
   precisionQuery.addEventListener('change',measure);
   document.fonts?.ready.then(()=>{if(!released)measure();});
   measure();
-  frame=requestAnimationFrame(draw);
 
   addEventListener('pagehide',()=>{
     released=true;

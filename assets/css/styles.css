@@ -152,18 +152,8 @@ font: 8px 'IBM Plex Mono';
 margin-left: 5px;
 color: var(--muted)
 }
-.contact-trigger {
-font-size: 12px;
-display: flex;
-gap: 38px;
-align-items: center;
-padding: 13px 0;
-border-bottom: 1px solid var(--ink)
-}
-.contact-trigger span {
-color: var(--accent);
-font-size: 18px
-}
+
+
 #scroll-story {
 height: 880vh;
 height: 880svh
@@ -388,13 +378,7 @@ display: flex;
 justify-content: space-between;
 color: var(--muted)
 }
-.artist-copy {
-position: absolute;
-top: 22%;
-left: 8%;
-width: 39%;
-max-width: 660px
-}
+
 .small-symbol {
 position: absolute;
 left: -42px;
@@ -402,73 +386,17 @@ top: 8px;
 color: var(--accent);
 font-size: 25px
 }
-.artist-copy h2 {
-font: 500 clamp(60px, 6.9vw, 120px)/.9 var(--display);
-letter-spacing: -.025em;
-font-variation-settings: 'opsz' 96, 'wdth' 100
-}
-.artist-intro {
-font-size: clamp(17px, 1.3vw, 22px);
-max-width: 450px;
-line-height: 1.45;
-letter-spacing: -.035em;
-margin-top: 30px
-}
-.artist-text {
-font-size: 13px;
-line-height: 1.7;
-max-width: 355px;
-margin-top: 18px;
-color: #625f58
-}
-.artist-signature {
-display: flex;
-align-items: center;
-gap: 35px;
-margin-top: 32px;
-padding-top: 20px;
-border-top: 1px solid var(--line);
-max-width: 355px
-}
-.artist-signature>span:first-child {
-font: 500 26px var(--display);
-letter-spacing: -.025em
-}
-.artist-signature .micro {
-font-size: 8px;
-color: var(--muted)
-}
-.artist-caption {
-position: absolute;
-right: 9%;
-bottom: 14%;
-text-align: right;
-color: var(--muted)
-}
-.artist-caption span {
-position: absolute;
-right: -30px;
-top: 0;
-font-size: 24px
-}
-.practice-heading {
-position: absolute;
-left: var(--gutter);
-top: 21%;
-z-index: 1
-}
-.practice-heading h2 {
-font: 500 clamp(44px, 4.7vw, 80px)/.94 var(--display);
-letter-spacing: -.025em;
-font-variation-settings: 'opsz' 96, 'wdth' 100
-}
-.practice-copy {
-position: absolute;
-right: 7%;
-top: 39%;
-width: 29%;
-max-width: 440px
-}
+
+
+
+
+
+
+
+
+
+
+
 .practice-counter {
 color: var(--muted);
 display: flex;
@@ -484,50 +412,13 @@ background: var(--line);
 width: 80px;
 margin-left: 15px
 }
-#practice-text h3 {
-font: 500 clamp(45px, 5.6vw, 96px)/1.05 var(--display);
-letter-spacing: -.025em;
-margin-top: 22px
-}
-#discipline-copy {
-font-size: clamp(16px, 1.25vw, 21px);
-letter-spacing: -.025em;
-line-height: 1.55;
-max-width: 355px;
-margin-top: 18px
-}
-#discipline-tools {
-display: block;
-font-size: 9px;
-color: var(--muted);
-margin-top: 24px;
-max-width: 300px
-}
-.practice-tabs {
-display: flex;
-gap: 20px;
-border-top: 1px solid var(--line);
-margin-top: 45px;
-padding-top: 16px
-}
-.practice-tabs button {
-font: 10px 'IBM Plex Mono';
-display: flex;
-flex-direction: column;
-align-items: start;
-gap: 9px;
-padding: 4px 0;
-color: #898579;
-min-height: 44px
-}
-.practice-tabs button span {
-font: 12px var(--body);
-color: var(--muted)
-}
-.practice-tabs button[aria-pressed=true],
-.practice-tabs button[aria-pressed=true] span {
-color: var(--accent)
-}
+
+
+
+
+
+
+
 .works-heading {
 position: absolute;
 top: 21%;
@@ -547,12 +438,7 @@ line-height: 1.6;
 max-width: 260px;
 margin-right: 4%
 }
-.works-note {
-position: absolute;
-bottom: 3%;
-left: var(--gutter);
-color: var(--muted)
-}
+
 #work-hitareas {
 position: absolute;
 inset: 0;
@@ -607,35 +493,11 @@ background: #e7e2d8
 .invitation>.micro {
 color: var(--muted)
 }
-.invitation-link {
-display: block;
-text-align: left;
-padding: 25px 0 55px;
-width: 100%;
-font: 500 clamp(56px, 8vw, 140px)/.93 var(--display);
-letter-spacing: -.025em;
-position: relative
-}
-.invitation-link>span {
-position: absolute;
-right: 4%;
-top: 15%;
-font-size: .7em;
-transition: transform .5s
-}
-.invitation-link:hover>span {
-transform: translate(8px, -8px)
-}
-.invitation-bottom {
-display: flex;
-justify-content: space-between;
-align-items: center;
-border-top: 1px solid #c7c1b5;
-padding-top: 25px
-}
-.invitation-bottom>a {
-font-size: 12px
-}
+
+
+
+
+
 .site-footer {
 display: flex;
 justify-content: space-between;
@@ -842,14 +704,7 @@ font-size: 8px;
 color: var(--muted);
 margin-top: 14px
 }
-.reference-links {
-display: flex;
-gap: 28px;
-border-top: 1px solid var(--line);
-margin-top: 30px;
-padding-top: 20px;
-font-size: 12px
-}
+
 .noscript {
 padding: 140px 6vw 60px
 }
@@ -870,36 +725,15 @@ overscroll-behavior: contain
 .site-header {
 height: 80px
 }
-.artist-copy {
-top: 23%
-}
-.artist-copy h2 {
-font-size: clamp(50px, 8.8vh, 78px)
-}
-.artist-intro {
-font-size: 16px;
-margin-top: 20px
-}
-.artist-text {
-font-size: 12px;
-margin-top: 12px
-}
-.artist-signature {
-margin-top: 18px;
-padding-top: 13px
-}
-.practice-heading h2 {
-font-size: 8vh
-}
-.practice-copy {
-top: 34%
-}
-#practice-text h3 {
-font-size: 9vh
-}
-.practice-tabs {
-margin-top: 25px
-}
+
+
+
+
+
+
+
+
+
 .hero-bottom {
 bottom: 10%
 }
@@ -926,10 +760,7 @@ font-size: 12px
 .site-header nav {
 display: none
 }
-.contact-trigger {
-gap: 22px;
-font-size: 11px
-}
+
 .hero-eyebrow,
 .hero-edition {
 top: 14%;
@@ -939,7 +770,6 @@ font-size: 8px
 max-width: 90px
 }
 .hero-panel h1 {
-font-size: 100px;
 top: 33%;
 letter-spacing: -.025em
 }
@@ -1004,98 +834,31 @@ font-size: 7px;
 bottom: 15%;
 max-width: 260px
 }
-.artist-copy {
-top: 20%;
-left: 24px;
-width: calc(100% - 48px)
-}
+
 .small-symbol {
 display: none
 }
-.artist-copy h2 {
-font-size: 54px;
-line-height: .93;
-letter-spacing: -.025em
-}
-.artist-copy h2 br:first-child {
-display: none
-}
-.artist-intro {
-font-size: 16px;
-max-width: 95%;
-margin-top: 20px
-}
-.artist-text {
-font-size: 11px;
-line-height: 1.6;
-max-width: 95%;
-margin-top: 12px
-}
-.artist-signature {
-margin-top: 16px;
-padding-top: 12px;
-max-width: 260px;
-gap: 24px
-}
-.artist-signature>span:first-child {
-font-size: 23px
-}
-.artist-signature .micro {
-font-size: 7px
-}
-.artist-caption {
-bottom: 7%;
-right: 32px;
-font-size: 7px
-}
-.artist-caption span {
-display: none
-}
-.practice-heading {
-top: 20%
-}
-.practice-heading h2 {
-font-size: 43px
-}
-.practice-copy {
-top: auto;
-bottom: 8%;
-left: 24px;
-right: 24px;
-width: auto;
-max-width: none
-}
+
+
+
+
+
+
+
+
+
+
+
+
 .practice-counter {
 font-size: 8px
 }
-#practice-text h3 {
-font-size: 42px;
-margin-top: 10px
-}
-#discipline-copy {
-font-size: 13px;
-line-height: 1.5;
-max-width: 90%;
-margin-top: 8px
-}
-#discipline-tools {
-font-size: 7px;
-margin-top: 12px;
-max-width: 100%
-}
-.practice-tabs {
-margin-top: 18px;
-padding-top: 10px;
-gap: 30px
-}
-.practice-tabs button {
-font-size: 8px;
-min-height: 35px;
-gap: 5px
-}
-.practice-tabs button span {
-font-size: 10px
-}
+
+
+
+
+
+
 .works-heading {
 top: 20%;
 align-items: start
@@ -1109,35 +872,15 @@ max-width: 120px;
 line-height: 1.5;
 margin: 4px 0 0 12px
 }
-.works-note {
-font-size: 7px;
-bottom: 3%
-}
+
 .invitation {
 padding: 70px 24px 30px
 }
-.invitation-link {
-font-size: 52px;
-padding: 25px 0 40px
-}
-.invitation-link>span {
-font-size: .55em;
-top: 15%;
-right: 0
-}
-.invitation-bottom {
-gap: 25px;
-align-items: start
-}
-.invitation-bottom>.micro {
-font-size: 7px;
-max-width: 135px
-}
-.invitation-bottom>a {
-font-size: 10px;
-max-width: 120px;
-text-align: right
-}
+
+
+
+
+
 .site-footer {
 padding: 24px;
 gap: 20px;
@@ -1196,35 +939,15 @@ font-size: 12px
 }
 }
 @media(max-width:760px) and (max-height:740px) {
-.artist-copy h2 {
-font-size: 47px
-}
-.artist-intro {
-font-size: 14px;
-margin-top: 14px
-}
-.artist-text {
-font-size: 10px;
-margin-top: 10px
-}
-.artist-signature {
-display: none
-}
-.practice-heading h2 {
-font-size: 37px
-}
-.practice-copy {
-bottom: 7%
-}
-#practice-text h3 {
-font-size: 36px
-}
-#discipline-copy {
-font-size: 12px
-}
-.practice-tabs {
-margin-top: 12px
-}
+
+
+
+
+
+
+
+
+
 .current-work h2 {
 font-size: 29px
 }
@@ -1298,46 +1021,20 @@ display: none
 body.static-page .artist-panel {
 min-height: 930px
 }
-body.static-page .artist-copy {
-top: 180px
-}
+
 body.static-page .section-kicker {
 top: 110px
 }
-body.static-page .static-artist {
-position: absolute;
-display: flex;
-width: 40%;
-right: 5%;
-top: 250px;
-gap: 15px
-}
-body.static-page .static-artist img {
-width: 48%;
-object-fit: cover;
-aspect-ratio: 4/5;
-border: 5px solid #f4efe5;
-box-shadow: 8px 18px 25px #22231f22;
-transform: rotate(7deg)
-}
-body.static-page .static-artist img:last-child {
-transform: rotate(-5deg) translateY(80px)
-}
+
+
+
 body.static-page .practice-panel {
 padding-top: 280px
 }
-body.static-page .practice-heading {
-top: 160px
-}
-body.static-page .practice-heading h2 {
-font-size: 60px
-}
-body.static-page .practice-heading h2 br {
-display: none
-}
-body.static-page .practice-copy {
-display: none
-}
+
+
+
+
 body.static-page .static-practice {
 display: grid;
 grid-template-columns: repeat(3, 1fr);
@@ -1425,35 +1122,16 @@ padding-bottom: 360px
 body.static-page .section-kicker {
 top: 85px
 }
-body.static-page .artist-copy {
-position: relative;
-inset: auto;
-width: auto
-}
-body.static-page .artist-copy h2 {
-font-size: 62px
-}
-body.static-page .static-artist {
-top: auto;
-bottom: 110px;
-width: 64%;
-right: 18%
-}
-body.static-page .static-artist img:last-child {
-transform: rotate(-5deg) translateY(25px)
-}
-body.static-page .artist-caption {
-display: none
-}
+
+
+
+
+
 body.static-page .practice-panel {
 padding-top: 240px
 }
-body.static-page .practice-heading {
-top: 130px
-}
-body.static-page .practice-heading h2 {
-font-size: 44px
-}
+
+
 body.static-page .static-practice {
 grid-template-columns: 1fr;
 margin-top: 0;
@@ -1492,35 +1170,16 @@ font-size: 11px
 }
 }
 @media(min-width:761px) {
-.practice-heading {
-left: auto;
-right: 7%;
-width: 29%;
-top: 23%
-}
-.practice-heading h2 {
-font-size: clamp(44px, 4.4vw, 76px)
-}
-.practice-copy {
-top: 46%
-}
+
+
+
 }
 @media(min-width:761px) and (max-height:760px) {
-.practice-heading {
-top: 21%
-}
-.practice-heading h2 {
-font-size: 8vh
-}
-.practice-copy {
-top: 44%
-}
-#practice-text h3 {
-font-size: 8vh
-}
-.practice-tabs {
-margin-top: 20px
-}
+
+
+
+
+
 }
 #work-hitareas button:before {
 content: attr(data-title);
@@ -1538,9 +1197,7 @@ touch-action: pan-y
 }
 .site-header {
 transform: translateZ(0);
-background: rgba(239, 235, 227, .64);
--webkit-backdrop-filter: blur(18px) saturate(1.15);
-backdrop-filter: blur(18px) saturate(1.15);
+background: rgba(239, 235, 227, .92);
 border-bottom: 1px solid rgba(255, 255, 255, .3);
 box-shadow: 0 4px 24px rgba(34, 35, 31, .025)
 }
@@ -1593,34 +1250,14 @@ top: 16%
 }
 }
 @media(max-width:760px) and (max-height:640px) {
-.artist-copy h2 {
-font-size: 42px
-}
-.practice-heading {
-top: 20.5%
-}
-.practice-heading h2 {
-font-size: 28px
-}
-.practice-copy {
-bottom: 6%
-}
-#practice-text h3 {
-font-size: 30px;
-margin-top: 6px
-}
-#discipline-copy {
-font-size: 11px;
-margin-top: 6px;
-max-width: 96%
-}
-#discipline-tools {
-margin-top: 8px
-}
-.practice-tabs {
-margin-top: 10px;
-padding-top: 8px
-}
+
+
+
+
+
+
+
+
 }
 @media(max-width:360px) {
 .card-controls {
@@ -1657,10 +1294,6 @@ box-shadow: 1px 2px 0 #d8d0c2, 3px 5px 0 #ede7dc, 7px 18px 28px #22231f24
 }
 /* V6 direction: tactile paper, photographic presence, one vermilion portal.
 All new movement uses the existing reversible scroll score and GSAP clock. */
-#scroll-story {
-height: 1430vh;
-height: 1430svh
-}
 .artist-panel {
 z-index: 17;
 padding: 0
@@ -2239,49 +1872,16 @@ gap: clamp(40px, 7vw, 130px);
 align-items: center;
 padding: 28px 0 60px
 }
-.invitation-title {
-font: 500 clamp(56px, 7.3vw, 128px)/.93 var(--display);
-letter-spacing: -.025em
-}
-.invitation-cta {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 5px;
-min-width: 0
-}
-.invitation-cta iframe {
-display: block;
-width: 100%;
-height: clamp(210px, 22vw, 270px);
-border: 0;
-background: transparent
-}
-.invitation-cta iframe:focus-visible {
-outline: 2px solid var(--accent);
-outline-offset: 6px
-}
-.invitation-cta>.micro {
-font-size: 8px;
-color: var(--muted);
-text-align: center
-}
+
+
+
+
+
 @media(max-width:900px) {
-.invitation-main {
-grid-template-columns: 1fr;
-gap: 16px;
-padding: 25px 0 42px
-}
-.invitation-title {
-font-size: clamp(52px, 12vw, 82px)
-}
-.invitation-cta {
-width: min(520px, 100%);
-justify-self: center
-}
-.invitation-cta iframe {
-height: clamp(180px, 50vw, 245px)
-}
+
+
+
+
 }
 /* One quiet hero footer. The orange index ties the UI to the printed editions. */
 .hero-bottom {
@@ -2485,9 +2085,7 @@ overflow: visible;
 border: 1px solid rgba(34, 35, 31, .13);
 border-radius: 11px;
 background: rgba(247, 243, 235, .76);
-box-shadow: 0 10px 25px rgba(55, 45, 36, .08), inset 0 1px rgba(255, 255, 255, .72);
--webkit-backdrop-filter: blur(16px) saturate(1.14);
-backdrop-filter: blur(16px) saturate(1.14)
+box-shadow: 0 10px 25px rgba(55, 45, 36, .08), inset 0 1px rgba(255, 255, 255, .72)
 }
 .site-header .sable-dock__item {
 position: relative;
@@ -2657,4 +2255,146 @@ height: 4px
 .site-header .sable-dock__item:focus-visible {
 outline: 2px solid var(--accent-ink);
 outline-offset: 2px
+}
+
+/* ——— Static-page modern reading layout (mobile and reduced-motion default) ——— */
+body.static-page {
+font-size: 16px;
+line-height: 1.6
+}
+body.static-page .panel {
+padding: clamp(48px, 10vw, 96px) clamp(20px, 5vw, 48px)
+}
+body.static-page h1 {
+font-size: clamp(34px, 9vw, 56px) !important;
+white-space: normal !important;
+line-height: 1.05
+}
+body.static-page h2 {
+font-size: clamp(22px, 5vw, 28px)
+}
+body.static-page p,
+body.static-page .static-practice p,
+body.static-page #artist-reading p {
+font-size: 16px;
+line-height: 1.6
+}
+body.static-page .micro {
+font-size: 12px
+}
+/* Sticky anchor nav on the static page, including under 760px */
+body.static-page .site-header {
+position: sticky;
+top: 0;
+z-index: 60
+}
+@media(max-width:760px) {
+body.static-page .site-header nav {
+display: flex;
+gap: 4px;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+scrollbar-width: none
+}
+body.static-page .site-header .sable-dock {
+display: flex
+}
+body.static-page .site-header .sable-dock__item {
+min-height: 44px;
+align-items: center
+}
+}
+/* Works grid density */
+@media(max-width:520px) {
+body.static-page #static-works {
+grid-template-columns: repeat(2, 1fr);
+gap: 12px
+}
+}
+@media(min-width:521px) and (max-width:900px) {
+body.static-page #static-works {
+grid-template-columns: repeat(3, 1fr);
+gap: 14px
+}
+}
+body.static-page #static-works span {
+font-size: 13px
+}
+/* Footer: real tap targets and a prominent mail action */
+body.static-page .site-footer .footer-socials a,
+body.static-page .site-footer .motion-toggle {
+display: inline-flex;
+align-items: center;
+min-height: 44px;
+font-size: 16px;
+padding: 0 4px
+}
+body.static-page .site-footer .footer-socials a[href^="mailto"] {
+border: 1px solid var(--ink);
+border-radius: 10px;
+padding: 0 16px
+}
+body.static-page .footer-signoff .micro {
+font-size: 13px
+}
+.motion-toggle {
+text-decoration: underline;
+text-underline-offset: 3px;
+color: var(--muted-strong)
+}
+
+/* Static page, narrow screens: stacked header and a flowing hero */
+@media(max-width:760px) {
+body.static-page .site-header {
+position: sticky;
+height: auto;
+flex-wrap: wrap;
+row-gap: 2px;
+padding: 10px var(--gutter)
+}
+body.static-page .site-header nav {
+order: 3;
+width: 100%;
+justify-content: flex-start
+}
+body.static-page .hero-panel {
+height: auto;
+min-height: 0;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 16px;
+padding-top: 32px;
+padding-bottom: 24px
+}
+body.static-page .hero-edition {
+position: static;
+order: -1;
+text-align: left
+}
+body.static-page .hero-panel h1 {
+position: static;
+transform: none;
+text-align: left
+}
+body.static-page .static-hero {
+position: static;
+width: 100%;
+height: 42vw;
+margin-top: 4px
+}
+body.static-page .hero-bottom {
+position: static;
+display: block;
+width: 100%;
+margin-top: 4px
+}
+}
+
+@media(max-width:760px) {
+body.static-page .site-footer .footer-socials,
+body.static-page .site-footer .footer-socials ul {
+flex-wrap: wrap;
+row-gap: 6px
+}
 }

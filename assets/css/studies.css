@@ -67,24 +67,10 @@ letter-spacing: -.025em
 font: 22px var(--body);
 color: var(--accent)
 }
-.study-index {
-display: flex;
-gap: 4px
-}
-.study-index button {
-min-width: 44px;
-height: 44px;
-font: 11px 'IBM Plex Mono';
-border-radius: 50%;
-transition: background .22s, color .22s
-}
-.study-index button:hover {
-background: #22231f0b
-}
-.study-index button[aria-current=true] {
-background: var(--ink);
-color: var(--paper)
-}
+
+
+
+
 .study-scroll {
 display: flex;
 align-items: center;
@@ -116,27 +102,9 @@ font: 500 clamp(34px, 4.4vw, 72px)/1.03 var(--display);
 letter-spacing: -.035em;
 margin-top: 13px
 }
-.study-start {
-display: inline-flex;
-align-items: center;
-justify-content: space-between;
-gap: 50px;
-min-height: 48px;
-background: var(--ink);
-color: var(--paper);
-padding: 14px 22px;
-border-radius: 3px;
-font-size: 13px;
-margin-top: 23px;
-transition: background .2s, transform .2s
-}
-.study-start:hover {
-background: var(--accent);
-transform: translateY(-2px)
-}
-.study-start span {
-font-size: 21px
-}
+
+
+
 .static-contact-portrait {
 display: none
 }
@@ -144,10 +112,7 @@ display: none
 padding: 30px var(--gutter);
 background: var(--paper)
 }
-.invitation-bottom {
-border: 0;
-padding: 0
-}
+
 @media(max-width:1000px) {
 .study-scroll {
 display: none
@@ -155,12 +120,8 @@ display: none
 .study-current {
 min-width: 0
 }
-.study-index {
-gap: 0
-}
-.study-index button {
-min-width: 38px
-}
+
+
 }
 @media(max-width:760px) {
 .works-panel .section-kicker {
@@ -193,16 +154,8 @@ margin-left: 12px
 font-size: 27px;
 padding-top: 6px
 }
-.study-index {
-margin: 13px -6px 0;
-justify-content: space-between;
-gap: 0
-}
-.study-index button {
-min-width: 36px;
-min-height: 44px;
-border-radius: 3px
-}
+
+
 .study-finale {
 top: 69%;
 left: 20px;
@@ -215,9 +168,7 @@ margin-top: 10px
 .study-finale>.micro {
 font-size: 8px
 }
-.study-start {
-margin-top: 18px
-}
+
 }
 @media(max-height:640px) {
 .study-finale {
@@ -226,9 +177,7 @@ top: 65%
 .study-finale h2 {
 font-size: 33px
 }
-.study-start {
-margin-top: 12px
-}
+
 .study-finale>.micro {
 display: none
 }
@@ -255,13 +204,8 @@ body.static-page .works-panel {
 padding-bottom: 65px
 }
 @media(prefers-reduced-motion:reduce) {
-.study-start,
-.study-index button {
-transition: none
-}
-.study-start:hover {
-transform: none
-}
+
+
 }
 /* Paper margins keep the reading controls legible as prints pass close by. */
 .works-panel:before,
@@ -393,26 +337,11 @@ margin: 26px auto 0
 .works-panel .works-heading p br {
 display: block
 }
-.study-index {
-max-width: 52vw;
-flex-wrap: wrap;
-justify-content: center;
-gap: 0
-}
-.study-index button {
-min-width: 30px;
-width: 30px;
-height: 36px;
-font-size: 9px
-}
+
+
 @media(max-width:1000px) {
-.study-index {
-max-width: 48vw
-}
-.study-index button {
-min-width: 28px;
-width: 28px
-}
+
+
 }
 @media(max-width:760px) {
 .works-panel .works-heading {
@@ -427,18 +356,8 @@ display: block;
 font-size: 13px;
 margin-top: 20px
 }
-.study-index {
-max-width: none;
-display: grid;
-grid-template-columns: repeat(8, 1fr);
-margin-top: 12px
-}
-.study-index button {
-width: 100%;
-min-width: 0;
-height: 34px;
-min-height: 34px
-}
+
+
 .study-current>.micro {
 font-size: 8px
 }

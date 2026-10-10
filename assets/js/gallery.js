@@ -16,7 +16,7 @@ window.createStudioGallery = async function(options) {
     // A high, broad key aligned with the left softbox reflection. The higher
     // angle keeps the cast shadow near the foot of each suspended card.
     const light = new T.DirectionalLight(0xfff7ef,.74); light.position.set(-5,24,12); light.castShadow=true;
-    light.shadow.mapSize.set(2048,2048); Object.assign(light.shadow.camera,{left:-14,right:14,top:12,bottom:-12,near:1,far:65}); light.shadow.bias=-.00006; light.shadow.normalBias=.004; light.shadow.radius=3.5;
+    light.shadow.mapSize.set(1024,1024); Object.assign(light.shadow.camera,{left:-14,right:14,top:12,bottom:-12,near:1,far:65}); light.shadow.bias=-.00006; light.shadow.normalBias=.004; light.shadow.radius=4;
     scene.add(light); scene.add(new T.HemisphereLight(0xfffcf5,0xe1dbd1,.34));
     const env = new T.Scene();
     env.add(new T.Mesh(new T.SphereGeometry(30,16,12), new T.MeshBasicMaterial({side:T.BackSide,color:new T.Color(.30,.29,.275)})));
@@ -80,7 +80,9 @@ window.createStudioGallery = async function(options) {
       const c=document.createElement('canvas');c.width=TW;c.height=Math.round(TW*(CH-PRINT.inset*2)/(CW-PRINT.inset*2));
       const ctx=c.getContext('2d');
       function paint(media){
-        ctx.clearRect(0,0,c.width,c.height);cover(ctx,media,c.width,c.height,zoom);
+        ctx.clearRect(0,0,c.width,c.height);
+        if(!media){ctx.fillStyle='#f3eee4';ctx.fillRect(0,0,c.width,c.height);return;}
+        cover(ctx,media,c.width,c.height,zoom);
         const vignette=ctx.createRadialGradient(c.width/2,c.height/2,c.width*.42,c.width/2,c.height/2,c.width*.97);
         vignette.addColorStop(0,'rgba(0,0,0,0)');vignette.addColorStop(1,'rgba(0,0,0,.07)');
         ctx.fillStyle=vignette;ctx.fillRect(0,0,c.width,c.height);
@@ -199,11 +201,11 @@ window.createStudioGallery = async function(options) {
           ctx.fillStyle=muted;ctx.font='400 17px "IBM Plex Mono"';ctx.textAlign='right';ctx.fillText(note.foot.toUpperCase(),TW-78,1217);
         });
       }
-      paint(0);tex=texture(c);tex.userData.reveal=(amount,headline)=>{const step=Math.round(score.clamp(amount)*52),h=Math.round(headline*42);if(step===lastStep&&h===lastHeadline)return;lastStep=step;lastHeadline=h;paint(step/52,h/42);tex.needsUpdate=true;};return tex;
+      paint(0);tex=texture(c);tex.userData.reveal=(amount,headline)=>{const step=Math.round(score.clamp(amount)*26),h=Math.round(headline*20);if(step===lastStep&&h===lastHeadline)return;lastStep=step;lastHeadline=h;paint(step/26,h/20);tex.needsUpdate=true;};return tex;
     }
     const bioTextures=window.BIOGRAPHY.map(biographyTexture);
     const headlineStarts=[null,null,null];
-    const biographyActionTexture=biographyAction?frontTexture(biographyAction):null;
+    let biographyActionTexture=biographyAction?frontTexture(biographyAction):null;
     function biographyShadowTexture(){
       const c=document.createElement('canvas');c.width=512;c.height=640;const ctx=c.getContext('2d');
       const path=(x,y,w,h,r)=>{ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();};
@@ -242,17 +244,19 @@ window.createStudioGallery = async function(options) {
     group.visible=false;scene.add(group);return{group,materials:[...materials.values()]};
   });
   // Transparent artist sits behind the final tunnel cards, then emerges beside the invitation.
-  const invitationTexture=new T.Texture(contactPortrait);invitationTexture.needsUpdate=true;invitationTexture.encoding=T.sRGBEncoding;
+  const invitationBlank=document.createElement('canvas');invitationBlank.width=4;invitationBlank.height=6;
+  const invitationTexture=new T.Texture(contactPortrait||invitationBlank);invitationTexture.needsUpdate=true;invitationTexture.encoding=T.sRGBEncoding;
   const invitationMaterial=new T.MeshBasicMaterial({map:invitationTexture,transparent:true,depthWrite:false,alphaTest:.015});
-  const invitation=new T.Mesh(new T.PlaneGeometry(2,2*contactPortrait.height/contactPortrait.width),invitationMaterial),invitationMaterials=new Map([['artist',invitationMaterial]]);
+  const invitation=new T.Mesh(new T.PlaneGeometry(2,2*(contactPortrait?contactPortrait.height/contactPortrait.width:1.5)),invitationMaterial),invitationMaterials=new Map([['artist',invitationMaterial]]);
   invitation.visible=false;scene.add(invitation);
   // A blurred silhouette receives the same upper-left light as the prints.
   // Its alpha follows the artist, so no shadow appears before the cutout does.
   const shadowSource=document.createElement('canvas');shadowSource.width=512;shadowSource.height=768;
-  const shadowInk=shadowSource.getContext('2d');shadowInk.drawImage(contactPortrait,0,0,512,768);
-  shadowInk.globalCompositeOperation='source-in';shadowInk.fillStyle='#655747';shadowInk.fillRect(0,0,512,768);
+  const shadowInk=shadowSource.getContext('2d');
   const shadowBlur=document.createElement('canvas');shadowBlur.width=512;shadowBlur.height=768;
-  const blurInk=shadowBlur.getContext('2d');blurInk.filter='blur(12px)';blurInk.drawImage(shadowSource,0,0);
+  const blurInk=shadowBlur.getContext('2d');
+  function paintInvitationShadow(img){shadowInk.clearRect(0,0,512,768);shadowInk.globalCompositeOperation='source-over';shadowInk.drawImage(img,0,0,512,768);shadowInk.globalCompositeOperation='source-in';shadowInk.fillStyle='#655747';shadowInk.fillRect(0,0,512,768);blurInk.clearRect(0,0,512,768);blurInk.filter='blur(12px)';blurInk.drawImage(shadowSource,0,0);}
+  if(contactPortrait)paintInvitationShadow(contactPortrait);
   const invitationShadowTexture=texture(shadowBlur),invitationShadowMaterial=new T.MeshBasicMaterial({map:invitationShadowTexture,transparent:true,depthWrite:false,opacity:0,toneMapped:false});
   const invitationShadow=new T.Mesh(invitation.geometry,invitationShadowMaterial);invitationShadow.visible=false;scene.add(invitationShadow);
   const footCanvas=document.createElement('canvas');footCanvas.width=256;footCanvas.height=64;
@@ -371,7 +375,11 @@ window.createStudioGallery = async function(options) {
   interaction.addEventListener('lostpointercapture',()=>{state.held=false;canvas.classList.remove('dragging');});
   interaction.addEventListener('pointerleave',()=>{pointer.x=pointer.y=0;state.hover=-1;onHover?.(-1);});
   function step(direction){if((state.blocked||state.scroll>.01))return;turnTween?.kill();state.velocity=0;const target=Math.round(state.theta/STEP)*STEP-direction*STEP;if(window.gsap&&!reduced)turnTween=gsap.to(state,{theta:target,duration:.9,ease:'expo.inOut'});else state.theta=target;}
+  let blockedFrames=0;
   function render(time){
+    // A dialog fully pauses the scene after a short settle (the lift transition
+    // needs a few frames to hide the lifted card before the backdrop freezes).
+    if(state.blocked){if(++blockedFrames>12)return;}else blockedFrames=0;
     const dt=Math.min(.05,lastTime?time-lastTime:.016);lastTime=time;
     const active=state.scroll<.01&&!state.blocked&&state.arrival===null;
     const revealBeats=[[score.INTRO.cardStart+.08,score.INTRO.cardEnd+.16],[score.INTRO.secondStart+.05,score.INTRO.secondEnd+.24],[score.INTRO.thirdStart+.05,score.INTRO.thirdEnd+.24]];
@@ -495,7 +503,12 @@ window.createStudioGallery = async function(options) {
       renderer.render(scene,camera);renderer.autoClear=true;
     }else renderer.render(scene,camera);
   }
-  return {render,resize,step,studyOrigin,setLiftedStudy(index){liftedStudy=index;},setArrival(t){if(t===null&&state.arrival!==null)state.theta=window.StudioArrival.finalTheta(W);else if(t!==null)state.theta=window.StudioArrival.theta(t,W);state.arrival=t;state.hover=-1;canvas.dataset.arrival=t===null?'done':t.toFixed(3);},setScroll(s){state.scroll=s;if(s>.01){turnTween?.kill();state.held=false;state.velocity=0;state.hover=-1;canvas.classList.remove('dragging');}},setBlocked(v){state.blocked=v;state.held=false;state.velocity=0;state.hover=-1;if(v)stopVideos();},setHidden(v){state.hidden=v;if(v)stopVideos();},togglePause(){state.paused=!state.paused;return state.paused;},get state(){return{theta:state.theta,paused:state.paused,front:state.front};},dispose(){studyAtmosphere?.dispose();biographyAtmosphere?.dispose();entranceTrails?.dispose();surfaceDetails?.dispose();tunnelCards.forEach(c=>c.materials.forEach(m=>m.dispose()));practiceTextures.forEach(t=>t.dispose());invitation.geometry.dispose();invitationTexture.dispose();invitationShadowTexture.dispose();invitationShadowMaterial.dispose();invitationFoot.geometry.dispose();invitationFootTexture.dispose();invitationFootMaterial.dispose();invitationMaterials.forEach(m=>m.dispose());extraCards.forEach(c=>c.materials.forEach(m=>m.dispose()));atelier?.dispose();floor.geometry.dispose();floorMaterial.dispose();casterMaterial.dispose();groundLight.shadow.map?.dispose();stopVideos();cards.forEach(c=>{c.materials.forEach(m=>{m.map?.dispose();m.dispose();});c.bioShadowMat.dispose();});bioShadowGeo.dispose();bioShadowTex.dispose();biographyActionTexture?.dispose();environment.dispose();renderer.dispose();}};
+  return {render,resize,step,studyOrigin,
+  supply(part){
+    if(part.practiceImage){const[k,img]=part.practiceImage;practiceTextures[k]?.userData.paint?.(img);}
+    if(part.biographyAction&&!biographyActionTexture)biographyActionTexture=frontTexture(part.biographyAction);
+    if(part.contactPortrait){invitationTexture.image=part.contactPortrait;invitationTexture.needsUpdate=true;paintInvitationShadow(part.contactPortrait);invitationShadowTexture.needsUpdate=true;}
+  },setLiftedStudy(index){liftedStudy=index;},setArrival(t){if(t===null&&state.arrival!==null)state.theta=window.StudioArrival.finalTheta(W);else if(t!==null)state.theta=window.StudioArrival.theta(t,W);state.arrival=t;state.hover=-1;canvas.dataset.arrival=t===null?'done':t.toFixed(3);},setScroll(s){state.scroll=s;if(s>.01){turnTween?.kill();state.held=false;state.velocity=0;state.hover=-1;canvas.classList.remove('dragging');}},setBlocked(v){state.blocked=v;state.held=false;state.velocity=0;state.hover=-1;if(v)stopVideos();},setHidden(v){state.hidden=v;if(v)stopVideos();},togglePause(){state.paused=!state.paused;return state.paused;},get state(){return{theta:state.theta,paused:state.paused,front:state.front};},dispose(){studyAtmosphere?.dispose();biographyAtmosphere?.dispose();entranceTrails?.dispose();surfaceDetails?.dispose();tunnelCards.forEach(c=>c.materials.forEach(m=>m.dispose()));practiceTextures.forEach(t=>t.dispose());invitation.geometry.dispose();invitationTexture.dispose();invitationShadowTexture.dispose();invitationShadowMaterial.dispose();invitationFoot.geometry.dispose();invitationFootTexture.dispose();invitationFootMaterial.dispose();invitationMaterials.forEach(m=>m.dispose());extraCards.forEach(c=>c.materials.forEach(m=>m.dispose()));atelier?.dispose();floor.geometry.dispose();floorMaterial.dispose();casterMaterial.dispose();groundLight.shadow.map?.dispose();stopVideos();cards.forEach(c=>{c.materials.forEach(m=>{m.map?.dispose();m.dispose();});c.bioShadowMat.dispose();});bioShadowGeo.dispose();bioShadowTex.dispose();biographyActionTexture?.dispose();environment.dispose();renderer.dispose();}};
 };
 
   
