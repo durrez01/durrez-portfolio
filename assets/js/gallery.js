@@ -217,7 +217,7 @@ window.createStudioGallery = async function(options) {
     const cap=stock.clone(),side=edge.clone();
     const body=new T.Mesh(geometry,[cap,side]);body.castShadow=true;body.receiveShadow=true;
     const mountMat=new T.MeshStandardMaterial({color:0xeee8dc,roughness:.78,roughnessMap:stockRoughness,bumpMap:paperTex,bumpScale:.0014,envMapIntensity:.32});
-    const frontMat=new T.MeshPhysicalMaterial({color:0xfaf7f0,roughness:.43,roughnessMap:stockRoughness,clearcoat:.24,clearcoatRoughness:.3,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-2,envMapIntensity:.48,bumpMap:paperTex,bumpScale:SETTINGS.photoRelief,map:frontTexture(images[i],i===2?1.38:1)});
+    const frontMat=new T.MeshPhysicalMaterial({color:0xfaf7f0,roughness:.43,roughnessMap:stockRoughness,clearcoat:.24,clearcoatRoughness:.3,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-2,envMapIntensity:.48,bumpMap:paperTex,bumpScale:SETTINGS.photoRelief,map:frontTexture(images[i])});
     const backMat=new T.MeshStandardMaterial({color:0xffffff,roughness:.94,roughnessMap:stockRoughness,envMapIntensity:.28,bumpMap:paperTex,bumpScale:SETTINGS.backRelief,map:backTexture(p,i)});
     const mount=new T.Mesh(mountGeo,mountMat);mount.position.z=PRINT.baseZ;mount.castShadow=true;mount.receiveShadow=true;
     const front=new T.Mesh(frontGeo,frontMat);front.position.z=PRINT.faceZ;front.receiveShadow=true;
