@@ -1,0 +1,29 @@
+<!doctype html>
+<!-- Dev-only harness: renders the hero headline with the production stylesheets
+     and no JS, so headless screenshots verify the responsive rules instantly. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>hero harness</title>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/atelier.css">
+<link rel="stylesheet" href="assets/css/studies.css">
+<link rel="stylesheet" href="assets/css/nav-contact.css">
+<link rel="stylesheet" href="assets/css/project-details.css">
+<link rel="stylesheet" href="assets/css/brief-details.css">
+<link rel="stylesheet" href="assets/css/finale.css">
+</head>
+<body class="static-page" data-boot="done" data-chapter="hero">
+<main>
+<section id="hero" class="panel hero-panel" aria-labelledby="hero-title">
+  <h1 id="hero-title">A system behind every screen.</h1>
+</section>
+</main>
+<script>
+addEventListener('load',()=>{const h=document.getElementById('hero-title'),c=getComputedStyle(h),r=h.getBoundingClientRect();
+document.title=`fs=${c.fontSize} ws=${c.whiteSpace} l=${Math.round(r.left)} r=${Math.round(r.right)} vw=${innerWidth}`;});
+</script>
+</body>
+</html>

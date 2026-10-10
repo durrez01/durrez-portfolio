@@ -17,10 +17,12 @@ box-sizing: border-box
 }
 html {
 scrollbar-width: thin;
-scrollbar-color: #aaa496 var(--paper)
+scrollbar-color: #aaa496 var(--paper);
+overflow-x: clip
 }
 body {
 margin: 0;
+overflow-x: clip;
 background: var(--paper);
 color: var(--ink);
 font-family: var(--body);
@@ -237,7 +239,7 @@ left: 50%;
 transform: translateX(-50%);
 white-space: nowrap;
 font-family: var(--display);
-font-size: clamp(80px, 10.9vw, 192px);
+font-size: clamp(20px, 7.1vw, 160px);
 line-height: 1;
 letter-spacing: -.025em;
 font-weight: 500;
@@ -1937,7 +1939,8 @@ gap: 16px;
 margin-bottom: 20px
 }
 body.static-page #portal-signature .portal-name {
-font-size: clamp(70px, 9vw, 140px)
+/* ~5em of glyphs: 13.5vw keeps "Durrez Ahmed" inside a phone viewport. */
+font-size: clamp(44px, 13.5vw, 140px)
 }
 body.static-page #portrait-figure {
 position: relative;
@@ -2203,8 +2206,24 @@ color: var(--muted-strong)
 }
 #hero-title,
 body.static-page .hero-panel h1 {
-font-size: clamp(25px, 9.1vw, 168px);
+/* The headline is one unbroken line; 7.1vw keeps its ~12.9em width inside
+   every viewport instead of cropping both ends. */
+font-size: clamp(20px, 7.1vw, 160px);
 letter-spacing: -.035em
+}
+@media(max-width:760px) {
+#hero-title,
+body.static-page .hero-panel h1 {
+left: var(--gutter);
+right: var(--gutter);
+transform: none;
+white-space: normal;
+text-align: center;
+text-wrap: balance;
+font-size: clamp(34px, 10.5vw, 64px);
+line-height: 1.04;
+top: 30%
+}
 }
 body.booting #hero-title {
 opacity: var(--headline-alpha);

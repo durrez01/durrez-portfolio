@@ -1273,7 +1273,14 @@ THE SOFTWARE.
 
 -->
 
-
+<script>
+  // Dev-only layout probe: ?probe=1 stamps the hero headline's computed metrics
+  // onto <body> so headless --dump-dom runs can assert the responsive layout.
+  if (new URLSearchParams(location.search).has('probe')) addEventListener('load', () => setTimeout(() => {
+    const h = document.getElementById('hero-title'), c = getComputedStyle(h), r = h.getBoundingClientRect();
+    document.body.setAttribute('data-probe', `fs=${c.fontSize} ws=${c.whiteSpace} left=${Math.round(r.left)} right=${Math.round(r.right)} vw=${innerWidth} scrollW=${document.documentElement.scrollWidth}`);
+  }, 800));
+</script>
 </body>
 
 </html>
