@@ -2,9 +2,9 @@
 window.ARTIST={name:'Durrez Ahmed',initials:'da',description:'Software Engineer',contactURL:''};
 // The physical card reverses and the accessible reading layout share this copy.
 window.BIOGRAPHY=[
- {layout:'material',label:'My work / Systems in production',title:['Full stack.','In production.'],lead:'I build backends, real-time pipelines and the consoles that run them.',body:'A video platform watching 1,000+ cameras. A healthcare system serving 10,000 doctors. An AI analytics dashboard, a digital library, and the APIs underneath all of them. Different domains, same discipline: design the data, ship the service, keep it up.',specimen:{from:'A requirement on a whiteboard.',to:'A system someone relies on.'},foot:'Three years of production systems in Node.js and TypeScript.'},
- {layout:'manifesto',label:'How I work / Measure, then move',title:['Latency is','a decision.'],lead:'Every slow system is slow for a reason somebody chose.',body:'I profile before I touch anything, then change one thing at a time. API response times down 25%. Query execution down 30%. Stream latency down 40%. None of it was luck; it was reading the flags, the query plans and the transport settings nobody had read.',signature:'Durrez Ahmed',foot:'Profile first. Then change one thing.'},
- {layout:'practice',label:'My range / Backend to browser',title:['One engineer.','Whole stack.'],lead:'APIs and schemas taught me structure. Streaming taught me timing. React let me put the system in front of the people who use it.',body:'I design the data model, write the service, deploy it on AWS and then build the console people actually use to run it — for surveillance operators, hospital admins and librarians alike.',mediums:['Backends','Real-time','Interfaces'],foot:'Jaipur, India. Open to interesting systems.'}
+ {layout:'material',label:'My work / Systems in production',title:['Full stack.','In production.'],lead:'I build backends, real-time pipelines and the consoles that run them.',body:'A video platform watching 1,000+ cameras. A healthcare system serving 10,000 doctors. AI analytics, a digital library, and the APIs underneath. Different domains, one discipline: keep it up.',specimen:{from:'A requirement on a whiteboard.',to:'A system someone relies on.'},foot:'Three years of production systems in Node.js and TypeScript.'},
+ {layout:'manifesto',label:'How I work / Measure, then move',title:['Latency is','a decision.'],lead:'Every slow system is slow for a reason somebody chose.',body:'I profile before I touch anything, then change one thing. APIs 25% faster, queries 30%, streams 40% — measured, never guessed.',signature:'Durrez Ahmed',foot:'Profile first. Then change one thing.'},
+ {layout:'practice',label:'My range / Backend to browser',title:['One engineer.','Whole stack.'],lead:'APIs and schemas taught me structure. Streaming taught me timing. React let me put the system in front of the people who use it.',body:'I design the data model, write the service, deploy it on AWS, then build the console operators actually use.',mediums:['Backends','Real-time','Interfaces'],foot:'Jaipur, India. Open to interesting systems.'}
 ];
 window.PORTFOLIO=[
   {
@@ -98,8 +98,8 @@ window.PORTFOLIO=[
     "discipline": "Scale",
     "year": "System 08",
     "image": "08",
-    "short": "AWS Certified AI Practitioner. Oracle Cloud Database Service Professional.",
-    "description": "AWS Certified AI Practitioner, issued 27 September 2026, valid to 27 September 2029. Oracle Cloud Database Service Professional alongside it, and a Fast Starter Award from HabileLabs.",
+    "short": "AWS and Oracle certified, 2026.",
+    "description": "AWS Certified AI Practitioner, issued 27 September 2026, valid to 27 September 2029. Oracle Cloud Database Service Professional alongside it.",
     "detail": "Verify at aws.amazon.com/verification — validation number b68a5cae73964cc2b71a43698aa9bc3e.",
     "alt": "A hexagonal certification badge over ruled certificate lines."
   }

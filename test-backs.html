@@ -1,0 +1,22 @@
+<!doctype html>
+<!-- Dev-only harness: renders the eight printed card backs with production data
+     and painter, for headless layout verification. -->
+<html lang="en">
+<head><meta charset="utf-8"><title>backs harness</title>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<style>body{margin:0;background:#555;display:grid;grid-template-columns:repeat(4,1fr)}canvas{width:100%;height:auto;display:block}</style>
+</head>
+<body>
+<script src="assets/js/projects.js"></script>
+<script src="assets/js/study-notes.js"></script>
+<script src="assets/js/card-backs.js"></script>
+<script>
+Promise.all([
+ document.fonts.load('400 30px "Geist"'),document.fonts.load('600 30px "Geist"'),
+ document.fonts.load('400 30px "IBM Plex Mono"'),document.fonts.load('500 30px "Bricolage"')
+].map(p=>p.catch(()=>{}))).then(()=>document.fonts.ready).then(()=>{
+ window.PORTFOLIO.forEach((p,i)=>{const c=document.createElement('canvas');document.body.append(c);window.paintStudyBack(c,p,i);});
+});
+</script>
+</body>
+</html>

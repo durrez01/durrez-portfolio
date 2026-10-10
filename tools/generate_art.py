@@ -149,7 +149,9 @@ def plate(size, seed, accent, motif, caption=None, index=None, ground="paper", s
                 size_px = max(40 * SS, int(size_px * maxw / tw))
                 f = heavy(size_px)
             lines.append((name, f, size_px))
-        y = h - m - 118 * SS - sum(int(sz * 1.08) for _, _, sz in lines)
+        # The 3D card face centre-crops this plate to ~71% of its height, so the
+        # stack must finish by ~0.83h to stay fully visible on the carousel.
+        y = int(h * 0.83) - sum(int(sz * 1.08) for _, _, sz in lines)
         for i, (name, f, sz) in enumerate(lines):
             fill = accent + (244,) if i == 1 else INK + (240,)
             marks.text((m, y), name, font=f, fill=fill,

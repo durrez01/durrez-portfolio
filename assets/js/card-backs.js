@@ -58,9 +58,9 @@ window.paintStudyBack=function(canvas,p,index){
   title(70,176,112);label(p.label,72,440);para(p.short,72,490,810,38,48,accent);
   p.fragments.forEach((_,i)=>{const y=665+i*130;text('0'+(i+1),72,y,23,accent,'IBM Plex Mono');fragment(i,155,y,750);});
   break;
- case 1:
-  title(70,180,158);rule(70,555);para(p.description,70,605,850,33,46);
-  fragment(0,70,910,370);fragment(1,545,910,370);
+ case 1:{
+  title(70,180,158);rule(70,555);const dEnd=para(p.description,70,605,850,33,46);
+  const fy=Math.max(910,dEnd+34);fragment(0,70,fy,370);fragment(1,545,fy,370);}
   for(let j=0;j<11;j++){c.globalAlpha=.1+j*.02;c.fillStyle=accent;c.fillRect(810+j*9,190,2,300);}c.globalAlpha=1;break;
  case 2:
   title(70,174,92);para(p.short,70,420,780,38,50,accent);
@@ -79,11 +79,12 @@ window.paintStudyBack=function(canvas,p,index){
   text((p.titleLines||[p.title])[0],70,190,108,ink,'Bricolage');text((p.titleLines||[p.title])[1]||'',195,315,140,accent,'Bricolage');
   p.fragments.forEach((line,i)=>{text(line,70+i*90,580+i*98,37,i===1?accent:ink);});
   para(p.description,70,950,850,30,43);break;
- case 6:
+ case 6:{
   title(70,184,112);label(p.label,70,465);
   ['#ac6950','#b49a50','#6f947c','#63769d','#8d7894'].forEach((color,i)=>{c.fillStyle=color;c.globalAlpha=.65;c.fillRect(70+i*177,535,168,10);});c.globalAlpha=1;
-  para(p.description,70,610,850,35,48);
-  p.fragments.forEach((line,i)=>{text('0'+(i+1),70+i*296,990,22,accent,'IBM Plex Mono');para(line,70+i*296,1035,250,32,41,ink);});break;
+  const dEnd=para(p.description,70,610,850,35,48);
+  const fy=Math.max(990,dEnd+36);
+  p.fragments.forEach((line,i)=>{text('0'+(i+1),70+i*296,fy,22,accent,'IBM Plex Mono');para(line,70+i*296,fy+45,250,32,41,ink);});}break;
  case 7:
   title(512,184,118,'center');text(p.short,512,470,36,accent,'Geist','center');
   c.fillStyle=accent;c.globalAlpha=.055;c.fillRect(512,565,440,330);c.globalAlpha=1;
