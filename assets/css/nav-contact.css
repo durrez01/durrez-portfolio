@@ -149,7 +149,7 @@ transition: none !important
 transform: none
 }
 }
-body.static-mode .thinking-contact,
-body.static-mode .thinking-contact * {
+body.static-page .thinking-contact,
+body.static-page .thinking-contact * {
 transition: none !important
 }

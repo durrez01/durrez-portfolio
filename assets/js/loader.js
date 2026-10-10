@@ -8,9 +8,9 @@ window.createStudioLoader=function({inspectLoading}={}){
   const copy=root.querySelector('.loader-progress'),veil=root.querySelector('.loader-veil');
   const target=document.querySelector('.wordmark .monogram');
   // The headline overlaps the flight; the identity types name first, then role.
-  const BEATS={flight:.04,dock:1.02,headline:.12,headlineEnd:1.80,name:1.02,role:1.66};
-  const COUNTER={duration:1.18};
-  const MONOGRAM={lettersEnd:1.18,dotStart:1.24,dotDuration:.34,settleHold:.28};
+  const BEATS={flight:.04,dock:1.02,headline:.12,headlineEnd:1.40,name:1.02,role:1.40};
+  const COUNTER={duration:.7};
+  const MONOGRAM={lettersEnd:1.18,dotStart:1.24,dotDuration:.34,settleHold:.18};
   // Two quiet crosses turn one at a time into n and v. The orange dot is held
   // back as a distinct final beat so every part of the identity is readable.
   const initials=document.createElement('span');initials.className='loader-initials';

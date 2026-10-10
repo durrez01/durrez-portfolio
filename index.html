@@ -18,6 +18,9 @@
     content="Software engineer building full-stack, backend and real-time systems in Node.js, TypeScript and React — video platforms, healthcare, AI analytics. Selected work by Durrez Ahmed.">
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23efebe3'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' text-anchor='middle' fill='%2322231f'%3Eda%3C/text%3E%3Ccircle cx='25' cy='23' r='2.4' fill='%23c8552b'/%3E%3C/svg%3E">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/bricolage-var.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/geist-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/ibmplexmono-400.woff2">
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/atelier.css">
@@ -82,7 +85,7 @@
             <span class="hero-edition-label">Selected systems</span><span>01—08 / 2026</span>
           </div>
           <h1 id="hero-title">A system behind every screen.</h1>
-          <div class="static-hero" aria-hidden="true"><img data-image="0" alt=""><img data-image="1" alt=""><img
+          <div class="static-hero" aria-hidden="true"><img decoding="async" data-image="0" alt=""><img decoding="async" data-image="1" alt=""><img
               data-image="2" alt="">
           </div>
           <div class="hero-bottom">
@@ -184,11 +187,11 @@
           </div>
           <div id="portrait-figure">
             <!-- One photographic master, exactly registered through three tonal layers. -->
-            <img id="portrait-soft" class="portrait-photo" crossorigin="anonymous" data-asset-src="portrait/figure.png"
+            <img id="portrait-soft" class="portrait-photo" crossorigin="anonymous" data-asset-src="portrait/figure.webp"
               alt="" aria-hidden="true" width="1024" height="1536">
             <img id="portrait-contrast" class="portrait-photo" crossorigin="anonymous"
-              data-asset-src="portrait/figure.png" alt="" aria-hidden="true" width="1024" height="1536">
-            <img id="maker-portrait" class="portrait-photo" crossorigin="anonymous" data-asset-src="portrait/figure.png"
+              data-asset-src="portrait/figure.webp" alt="" aria-hidden="true" width="1024" height="1536">
+            <img id="maker-portrait" class="portrait-photo" crossorigin="anonymous" data-asset-src="portrait/figure.webp"
               alt="An abstract stack of service racks threaded by stream lines." width="1024" height="1536">
             <svg id="portrait-drawing" viewBox="0 0 1024 1536" fill="none" aria-hidden="true">
               <g id="portrait-lines">
@@ -205,12 +208,12 @@
             </svg>
           </div>
           <div id="portrait-caption">
-            <img id="portrait-signature" crossorigin="anonymous" data-asset-src="identity/signature.png"
+            <img id="portrait-signature" crossorigin="anonymous" data-asset-src="identity/signature.webp"
               alt="Durrez Ahmed signature" width="2037" height="772"><span id="portrait-quote" class="portrait-quote">—
               “Measure it.<br>Then make it faster.”</span>
           </div>
           <div id="artist-guide" aria-hidden="true"><img crossorigin="anonymous"
-              data-asset-src="guide/practice-guide.png" alt="" width="1024" height="1536">
+              data-asset-src="guide/practice-guide.webp" alt="" width="1024" height="1536">
           </div>
           <div id="artist-reading" class="visually-hidden"></div>
         </section>
@@ -263,17 +266,17 @@
             </div>
           </div>
           <div class="static-practice">
-            <article><img data-image="2" alt="A calendar grid with repeating cells">
+            <article><img decoding="async" data-image="2" alt="A calendar grid with repeating cells">
               <h3>Backends.</h3>
               <p>Give the load somewhere to go. Queues, schemas and APIs that hold their shape. Node.js · TypeScript ·
                 PostgreSQL / MongoDB · Redis / BullMQ.</p>
             </article>
-            <article><img data-image="0" alt="Camera grid with a live sweep line">
+            <article><img decoding="async" data-image="0" alt="Camera grid with a live sweep line">
               <h3>Real-time.</h3>
               <p>Keep the present tense live. Streams, event pipelines and transport that survives the long run. FFmpeg
                 · MediaMTX · WebRTC · RTSP / HLS.</p>
             </article>
-            <article><img data-image="6" alt="Layered service planes in perspective">
+            <article><img decoding="async" data-image="6" alt="Layered service planes in perspective">
               <h3>Product.</h3>
               <p>Put it in front of someone. Cloud, containers and a console an operator trusts. React · AWS · Docker ·
                 CI/CD.</p>
@@ -292,7 +295,7 @@
             </h2>
             <p>A walk through systems I’ve built. <br>And the ones we could build next.</p>
           </div>
-          <div id="works-guide" hidden=""><img crossorigin="anonymous" data-asset-src="guide/works-guide.png" alt="">
+          <div id="works-guide" hidden=""><img crossorigin="anonymous" data-asset-src="guide/works-guide.webp" alt="">
           </div>
           <div id="work-hitareas" aria-label="Selected work" hidden=""></div>
           <div id="static-works" class="static-works"></div>
@@ -307,7 +310,7 @@
             <p class="micro">The next one could be ours.</p>
             <h2>Let’s work<br><em>together.</em></h2>
             <p class="study-finale-note">A role, a problem, a system that needs building.</p><iframe
-              id="liquid-contact-frame" srcdoc="&lt;!doctype html&gt;
+              id="liquid-contact-frame" data-deferred-srcdoc="&lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -783,11 +786,11 @@ body{margin:0;background:var(--bg);color:#8a8a8f;font-family:&quot;Geist Mono&qu
 &lt;/body&gt;
 &lt;/html&gt;
 
-" title="Get in touch with Durrez Ahmed" loading="eager"></iframe>
+" title="Get in touch with Durrez Ahmed" loading="lazy"></iframe>
             <p id="contact" class="finale-conversation"><span aria-hidden="true"></span>A conversation is a good place
               to start.</p>
           </div>
-          <img class="static-contact-portrait" crossorigin="anonymous" data-asset-src="guide/contact-right.png"
+          <img class="static-contact-portrait" crossorigin="anonymous" data-asset-src="guide/contact-right.webp"
             alt="Abstract marks pointing toward the project invitation">
 
         </section>
@@ -890,7 +893,7 @@ body{margin:0;background:var(--bg);color:#8a8a8f;font-family:&quot;Geist Mono&qu
         opacity: 1 !important
       }
     </style>
-    <p class="noscript">This portfolio uses JavaScript for its card experience. <a data-asset-href="work/01.jpg">View
+    <p class="noscript">This portfolio uses JavaScript for its card experience. <a data-asset-href="work/01.webp">View
         the first study</a>.</p>
   </noscript>
 

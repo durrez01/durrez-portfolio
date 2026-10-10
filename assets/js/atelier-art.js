@@ -65,7 +65,7 @@ window.createAtelierArtwork=function(options){
  const ribbon=new T.Mesh(geometry,metal),edge=new T.Mesh(edgeGeometry,edgeMetal);ribbon.castShadow=true;edge.castShadow=true;sculpture.add(ribbon,edge);lead.group.add(sculpture);
  // Local illumination moves with the artwork, so the material never changes
  // lighting rigs when the card moves left or the sculpture comes forward.
- const key=new T.DirectionalLight(0xfff9ef,.28);key.position.set(-3,4,7);key.castShadow=true;key.shadow.mapSize.set(2048,2048);Object.assign(key.shadow.camera,{left:-3,right:3,top:3,bottom:-3,near:.1,far:35});key.shadow.bias=-.00015;key.shadow.normalBias=.008;key.shadow.radius=8;
+ const key=new T.DirectionalLight(0xfff9ef,.28);key.position.set(-3,4,7);key.castShadow=true;key.shadow.mapSize.set(1024,1024);Object.assign(key.shadow.camera,{left:-3,right:3,top:3,bottom:-3,near:.1,far:35});key.shadow.bias=-.00015;key.shadow.normalBias=.008;key.shadow.radius=8;
  lead.group.add(key,key.target);
  // The stock 17-tap PCF grid produces repeated outlines at studio-light
  // softness. A disk filter on this print alone removes those grid bands. The
@@ -136,7 +136,7 @@ window.createAtelierArtwork=function(options){
   surfaces.forEach(({g,p,n})=>{
    const pa=g.attributes.position,na=g.attributes.normal,full=g.attributes.sculpturePosition;
    for(let i=0;i<p.length;i+=3){v.fromArray(p,i).applyMatrix4(rotation);normal.fromArray(n,i).transformDirection(rotation);pa.setXYZ(i/3,v.x*size,(v.y+.07+pop*.05)*size,PRINT.faceZ+.012+(v.z-minZ)*depth*size+pop*.24);na.setXYZ(i/3,normal.x,normal.y,normal.z);if(full)full.setXYZ(i/3,v.x*size,(v.y+.07+pop*.05)*size,PRINT.faceZ+.012+(v.z-minZ)*size+pop*.24);}
-   pa.needsUpdate=na.needsUpdate=true;if(full)full.needsUpdate=true;g.computeBoundingSphere();
+   pa.needsUpdate=na.needsUpdate=true;if(full)full.needsUpdate=true;if(!g.userData.sphereFrozen){g.computeBoundingSphere();g.boundingSphere.radius*=1.6;g.userData.sphereFrozen=true;}
   });
   // The rolled rim gains thickness with the object. Keeping the tube out of
   // the compressed print prevents its triangles fighting the flat surface.
