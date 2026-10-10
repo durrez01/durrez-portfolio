@@ -1,0 +1,8 @@
+{
+  "name": "durrez-portfolio",
+  "private": true,
+  "description": "Static portfolio with one serverless contact endpoint (api/contact.js).",
+  "dependencies": {
+    "nodemailer": "^6.9.14"
+  }
+}

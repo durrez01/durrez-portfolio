@@ -1,0 +1,629 @@
+
+/* Three compositions in one pinned studio: observe → travel left → move closer. */
+#scroll-story {
+height: 2760vh;
+height: 2760svh
+}
+.atelier {
+background: none;
+overflow: hidden
+}
+.atelier .section-kicker {
+top: 16%;
+font-size: 11px
+}
+.atelier-copy,
+.atelier-copy-stack {
+position: absolute;
+inset: 0;
+pointer-events: none
+}
+.atelier-copy-stack article {
+position: absolute;
+left: var(--gutter);
+top: 35%;
+width: 32%;
+max-width: 430px;
+opacity: 0;
+will-change: transform, opacity
+}
+.atelier-copy-stack article[data-atelier-copy="1"] {
+left: 69%;
+width: 27%;
+max-width: 410px
+}
+.atelier-copy-stack article>span.micro {
+display: block;
+font-size: 11px;
+color: var(--accent-ink);
+margin-bottom: 16px
+}
+.atelier-copy-stack h3 {
+font: 500 clamp(54px, 6.1vw, 100px)/.95 var(--display);
+letter-spacing: -.055em
+}
+.atelier-copy-stack h3 span {
+color: var(--accent)
+}
+.atelier-copy-stack p {
+font-size: clamp(15px, 1.35vw, 21px);
+line-height: 1.5;
+letter-spacing: -.025em;
+margin-top: 24px
+}
+.atelier-copy-stack small {
+display: block;
+margin-top: 25px;
+font-size: 12px;
+line-height: 1.6;
+color: var(--muted)
+}
+.atelier-copy-stack article[data-atelier-copy="2"] {
+left: 0;
+right: 0;
+top: 21%;
+bottom: 0;
+width: auto;
+max-width: none;
+text-align: center
+}
+.atelier-copy-stack [data-atelier-copy="2"] h3 {
+font-size: clamp(48px, 4.6vw, 72px)
+}
+.atelier-copy-stack [data-atelier-copy="2"] p {
+position: absolute;
+left: 24px;
+right: 24px;
+top: 56vh;
+margin: 0;
+font-size: clamp(14px, 1.15vw, 18px)
+}
+/* One anchored rail unifies navigation, caption and scroll instruction. */
+.atelier-rail {
+position: absolute;
+z-index: 8;
+bottom: 3%;
+left: var(--gutter);
+right: var(--gutter);
+display: grid;
+grid-template-columns: 1fr 300px 1fr;
+align-items: center;
+gap: 30px;
+border-top: 1px solid var(--line);
+padding-top: 16px
+}
+.atelier-principle {
+font-size: 11px;
+line-height: 1.7;
+color: var(--muted)
+}
+.atelier-tabs {
+display: flex;
+justify-content: space-between;
+gap: 26px;
+width: 100%
+}
+.atelier-tabs button {
+position: relative;
+display: flex;
+gap: 7px;
+flex-direction: column;
+align-items: flex-start;
+min-width: 48px;
+min-height: 44px;
+padding: 0;
+color: var(--muted)
+}
+.atelier-tabs b {
+font: 400 8px 'IBM Plex Mono', monospace
+}
+.atelier-tabs span {
+font-size: 11px
+}
+.atelier-tabs button:before {
+content: '';
+position: absolute;
+top: -17px;
+left: 0;
+width: 100%;
+height: 2px;
+background: var(--accent);
+transform: scaleX(0);
+transform-origin: left;
+transition: transform .3s
+}
+.atelier-tabs button[aria-pressed=true] {
+color: var(--ink)
+}
+.atelier-tabs button[aria-pressed=true]:before {
+transform: scaleX(1)
+}
+.atelier-cue {
+display: flex;
+flex-direction: column;
+gap: 6px;
+text-align: right
+}
+.atelier-note {
+font: 400 12px var(--body);
+color: var(--ink)
+}
+.atelier-gesture {
+font-size: 11px;
+color: var(--muted);
+letter-spacing: .06em
+}
+.atelier-play {
+position: absolute;
+z-index: 8;
+left: 50%;
+top: 82%;
+transform: translateX(-50%);
+font-size: 11px;
+min-height: 44px;
+padding: 8px 15px;
+border: 1px solid var(--line);
+border-radius: 24px;
+opacity: 0;
+visibility: hidden
+}
+.atelier-play span {
+margin-left: 20px;
+color: var(--accent)
+}
+body.static-page .atelier-copy,
+body.static-page .atelier-rail,
+body.static-page .atelier-play {
+display: none
+}
+body.static-page #scroll-story {
+height: auto
+}
+@media(max-width:1050px) and (min-width:761px) {
+.atelier-copy-stack article {
+top: 32%
+}
+.atelier-copy-stack h3 {
+font-size: 68px
+}
+.atelier-copy-stack p {
+font-size: 16px
+}
+.atelier-copy-stack article[data-atelier-copy="1"] {
+left: 67%;
+width: 29%
+}
+}
+@media(max-width:760px) {
+.atelier .section-kicker {
+top: 14%;
+font-size: 11px
+}
+.atelier-copy-stack article {
+left: 24px;
+right: 24px;
+top: 22%;
+width: auto;
+max-width: none
+}
+.atelier-copy-stack article[data-atelier-copy="1"] {
+left: 34%;
+right: 24px;
+top: 22%;
+width: auto;
+max-width: none
+}
+.atelier-copy-stack h3 {
+font-size: 54px
+}
+.atelier-copy-stack article>span.micro {
+font-size: 11px;
+margin-bottom: 9px
+}
+.atelier-copy-stack p {
+font-size: 13px;
+line-height: 1.45;
+margin-top: 12px;
+max-width: 31ch
+}
+.atelier-copy-stack p br {
+display: none
+}
+.atelier-copy-stack small {
+display: none
+}
+.atelier-copy-stack article[data-atelier-copy="2"] {
+top: 22%;
+left: 0;
+right: 0;
+width: auto
+}
+.atelier-copy-stack [data-atelier-copy="2"] h3 {
+font-size: 45px
+}
+.atelier-copy-stack [data-atelier-copy="2"] p {
+top: 54vh;
+max-width: none;
+font-size: 12px
+}
+.atelier-play {
+top: 80%;
+font-size: 10px;
+background: var(--paper)
+}
+}
+@media(max-height:700px) and (min-width:761px) {
+.atelier-copy-stack article {
+top: 31%
+}
+.atelier-copy-stack h3 {
+font-size: 65px
+}
+.atelier-copy-stack p {
+font-size: 15px;
+margin-top: 16px
+}
+.atelier-copy-stack small {
+margin-top: 14px;
+font-size: 10px
+}
+.atelier-copy-stack [data-atelier-copy="2"] h3 {
+font-size: 48px
+}
+.atelier-play {
+top: 81%;
+min-height: 38px
+}
+.atelier-tabs button {
+min-height: 40px
+}
+}
+@media(max-width:760px) and (max-height:650px) {
+.atelier-copy-stack article,
+.atelier-copy-stack article[data-atelier-copy="1"] {
+top: 21%
+}
+.atelier-copy-stack h3 {
+font-size: 42px
+}
+.atelier-copy-stack [data-atelier-copy="2"] h3 {
+font-size: 38px
+}
+.atelier-copy-stack p {
+font-size: 11px;
+max-width: 32ch;
+margin-top: 9px
+}
+.atelier-copy-stack article>span.micro {
+font-size: 11px
+}
+.atelier-play {
+top: 80%;
+min-height: 44px;
+padding: 6px 12px
+}
+}
+@media(prefers-reduced-motion:reduce) {
+.atelier * {
+transition: none !important
+}
+}
+/* The methodology stays readable with animation disabled or WebGL unavailable. */
+body.static-page .atelier {
+padding-top: 140px;
+min-height: 0
+}
+body.static-page .atelier .section-kicker {
+top: 85px
+}
+body.static-page .atelier #practice-title {
+position: static;
+width: auto;
+height: auto;
+overflow: visible;
+clip: auto;
+clip-path: none;
+white-space: normal;
+font: 500 60px/.95 var(--display);
+letter-spacing: -.045em;
+margin-bottom: 40px;
+max-width: 400px
+}
+body.static-page .atelier .static-practice {
+margin-top: 0
+}
+@media(max-width:760px) {
+body.static-page .atelier #practice-title {
+font-size: 46px;
+max-width: 290px
+}
+}
+/* Rail adapts as one component; captions no longer float around the artwork. */
+@media(max-width:1050px) and (min-width:761px) {
+.atelier-rail {
+grid-template-columns: 1fr 260px 1fr;
+gap: 18px
+}
+.atelier-note {
+font-size: 11px
+}
+}
+@media(max-width:760px) {
+.atelier-rail {
+left: 24px;
+right: 24px;
+bottom: 2%;
+grid-template-columns: 1fr;
+gap: 4px;
+padding-top: 12px
+}
+.atelier-principle {
+display: none
+}
+.atelier-tabs {
+gap: 14px
+}
+.atelier-tabs button {
+min-height: 40px
+}
+.atelier-tabs button:before {
+top: -13px
+}
+.atelier-cue {
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+gap: 10px;
+text-align: left
+}
+.atelier-note {
+font-size: 10px
+}
+.atelier-gesture {
+font-size: 11px;
+text-align: right
+}
+.atelier-play {
+top: 80%
+}
+}
+@media(max-width:760px) and (max-height:650px) {
+.atelier-rail {
+bottom: 1.5%;
+gap: 0;
+padding-top: 8px
+}
+.atelier-tabs button:before {
+top: -9px
+}
+.atelier-tabs button {
+min-height: 38px
+}
+.atelier-cue {
+display: none
+}
+}
+/* The expanded study surrounds leave a clear center and one compact invitation. */
+.atelier-copy-stack article[data-atelier-copy="1"] {
+left: 77%;
+width: 20%;
+max-width: 330px;
+top: 33%
+}
+.atelier-copy-stack article[data-atelier-copy="1"] h3 {
+font-size: clamp(50px, 5.2vw, 88px)
+}
+.atelier-copy-stack article[data-atelier-copy="1"] p {
+font-size: clamp(14px, 1.2vw, 19px)
+}
+.atelier-copy-stack article[data-atelier-copy="1"] small {
+font-size: 11px
+}
+.atelier-copy-stack article[data-atelier-copy="2"] {
+inset: auto;
+left: 50%;
+top: 18%;
+width: max-content;
+max-width: 68%;
+display: grid;
+grid-template-columns: auto auto;
+column-gap: 30px;
+align-items: center;
+text-align: left;
+transform: translateX(-50%)
+}
+.atelier-copy-stack [data-atelier-copy="2"]>span.micro {
+grid-column: 1/-1;
+margin-bottom: 10px
+}
+.atelier-copy-stack [data-atelier-copy="2"] h3 {
+grid-column: 1;
+grid-row: 2/4;
+font-size: clamp(44px, 4.8vw, 76px)
+}
+.atelier-copy-stack [data-atelier-copy="2"] p {
+position: static;
+grid-column: 2;
+grid-row: 2;
+margin: 0;
+font-size: 13px;
+max-width: none
+}
+.atelier-copy-stack [data-atelier-copy="2"] .atelier-play {
+position: static;
+grid-column: 2;
+grid-row: 3;
+justify-self: start;
+transform: none;
+pointer-events: auto;
+margin-top: 6px;
+padding: 7px 14px;
+min-height: 38px;
+font-size: 11px
+}
+@media(max-width:1050px) and (min-width:761px) {
+.atelier-copy-stack article[data-atelier-copy="1"] {
+left: 77%;
+width: 20%;
+top: 31%
+}
+.atelier-copy-stack article[data-atelier-copy="1"] h3 {
+font-size: 52px
+}
+.atelier-copy-stack article[data-atelier-copy="1"] small {
+font-size: 10px
+}
+.atelier-copy-stack article[data-atelier-copy="2"] {
+column-gap: 16px
+}
+.atelier-copy-stack [data-atelier-copy="2"] p {
+font-size: 11px
+}
+}
+@media(max-width:760px) {
+.atelier-copy-stack article,
+.atelier-copy-stack article[data-atelier-copy="1"] {
+left: 24px;
+right: 24px;
+top: 20%;
+width: auto;
+max-width: none
+}
+.atelier-copy-stack article[data-atelier-copy="1"] h3 {
+font-size: 54px
+}
+.atelier-copy-stack article[data-atelier-copy="1"] p {
+font-size: 13px;
+max-width: 30ch
+}
+.atelier-copy-stack article[data-atelier-copy="2"] {
+left: 50%;
+right: auto;
+top: 18%;
+width: 100%;
+max-width: none;
+display: flex;
+flex-direction: column;
+text-align: center;
+gap: 0
+}
+.atelier-copy-stack [data-atelier-copy="2"] h3 {
+font-size: 42px
+}
+.atelier-copy-stack [data-atelier-copy="2"] p {
+margin-top: 9px;
+font-size: 12px
+}
+.atelier-copy-stack [data-atelier-copy="2"] .atelier-play {
+margin-top: 7px;
+min-height: 38px;
+font-size: 10px
+}
+}
+@media(max-width:760px) and (max-height:650px) {
+.atelier-copy-stack article,
+.atelier-copy-stack article[data-atelier-copy="1"] {
+top: 20%
+}
+.atelier-copy-stack h3,
+.atelier-copy-stack article[data-atelier-copy="1"] h3 {
+font-size: 40px
+}
+.atelier-copy-stack [data-atelier-copy="2"] h3 {
+font-size: 34px
+}
+.atelier-copy-stack [data-atelier-copy="2"] p {
+margin-top: 5px
+}
+.atelier-copy-stack [data-atelier-copy="2"]>span.micro {
+margin-bottom: 6px
+}
+}
+/* Centered invitation above the interactive sculpture. */
+.atelier-copy-stack article[data-atelier-copy="2"] {
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+left: 50%;
+top: 17%;
+width: 100%;
+max-width: 600px;
+gap: 0
+}
+.atelier-copy-stack [data-atelier-copy="2"]>span.micro {
+margin: 0 0 8px
+}
+.atelier-copy-stack [data-atelier-copy="2"] h3 {
+font-size: clamp(38px, 4vw, 64px);
+margin: 0
+}
+.atelier-copy-stack [data-atelier-copy="2"] p {
+position: static;
+margin: 9px 0 0;
+font-size: 13px
+}
+.atelier-copy-stack [data-atelier-copy="2"] .atelier-play {
+align-self: center;
+margin-top: 10px;
+display: flex;
+align-items: center;
+gap: 12px
+}
+.atelier-play svg {
+width: 17px;
+height: 17px;
+fill: none;
+stroke: currentColor;
+stroke-width: 1.6;
+stroke-linecap: round;
+stroke-linejoin: round
+}
+@media(max-width:760px) {
+.atelier-copy-stack article[data-atelier-copy="2"] {
+top: 17%;
+max-width: 100%
+}
+.atelier-copy-stack [data-atelier-copy="2"] h3 {
+font-size: 38px
+}
+}
+/* Stable word width while letters type; the orange stop arrives last. */
+.atelier-copy-stack h3 .atelier-type,
+.atelier-copy-stack h3 .atelier-letter {
+color: inherit
+}
+.atelier-copy-stack h3 .atelier-dot {
+color: var(--accent)
+}
+.atelier-copy-stack [data-atelier-copy="2"] h3 {
+font-size: clamp(54px, 6.1vw, 100px);
+white-space: nowrap
+}
+.atelier-play svg {
+width: 20px;
+height: 20px;
+color: var(--accent);
+stroke-width: 1.45;
+flex: none
+}
+@media(max-width:1050px) and (min-width:761px) {
+.atelier-copy-stack [data-atelier-copy="2"] h3 {
+font-size: 68px
+}
+}
+@media(max-height:700px) and (min-width:761px) {
+.atelier-copy-stack [data-atelier-copy="2"] h3 {
+font-size: 65px
+}
+}
+@media(max-width:760px) {
+.atelier-copy-stack [data-atelier-copy="2"] h3 {
+font-size: 54px
+}
+}
+@media(max-width:760px) and (max-height:650px) {
+.atelier-copy-stack [data-atelier-copy="2"] h3 {
+font-size: 40px
+}
+}

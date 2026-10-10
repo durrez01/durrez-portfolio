@@ -1,0 +1,229 @@
+
+/* A personal closing invitation: warm paper, quiet relief, one copper accent.
+* Cast shadows share the portrait’s 1.2:1 right/down light direction. */
+.works-panel .study-finale {
+top: 29%;
+left: 54%;
+right: 6%
+}
+.works-panel:before,
+.works-panel:after {
+opacity: calc(1 - var(--finale-progress, 0))
+}
+.study-finale>.micro {
+letter-spacing: .085em;
+color: #7b7569
+}
+.study-finale h2 {
+line-height: .99;
+text-shadow: 0 1px 0 #fff8, .12em .10em .15em #65574726
+}
+.study-finale h2 em {
+text-shadow: inherit
+}
+.study-finale-note {
+color: #706b60;
+text-shadow: 0 1px 0 #fff8;
+max-width: 29ch
+}
+.study-finale #liquid-contact-frame {
+pointer-events: auto;
+margin-top: 2px;
+filter: drop-shadow(9px 7.5px 12px #6557470d)
+}
+.finale-conversation {
+display: flex;
+align-items: center;
+gap: 12px;
+max-width: 32ch;
+margin: 0;
+font-size: clamp(12px, 1vw, 15px);
+line-height: 1.6;
+color: #7b7366;
+letter-spacing: -.012em;
+text-shadow: 0 1px 0 #fff8
+}
+.finale-conversation>span {
+flex: none;
+width: 25px;
+height: 1px;
+background: var(--accent);
+opacity: .65
+}
+body:not(.static-page) .site-footer {
+min-height: 88px;
+padding: 16px var(--gutter) 20px;
+background: linear-gradient(0deg, #efebe3f5, #efebe3b3);
+border-top: 0;
+align-items: center
+}
+.site-footer:before {
+content: '';
+position: absolute;
+top: 0;
+left: var(--gutter);
+right: var(--gutter);
+height: 1px;
+background: linear-gradient(90deg, #bca99155, #bca99125 70%, #bca99155)
+}
+.site-footer .footer-signoff {
+display: flex;
+flex-direction: column;
+gap: 5px
+}
+.footer-signoff-name {
+font: 500 18px/1 var(--display);
+letter-spacing: -.04em
+}
+.footer-period {
+color: var(--accent)
+}
+.footer-signoff .micro {
+font-size: 12px;
+color: var(--muted-strong);
+letter-spacing: .035em
+}
+.footer-year {
+margin-left: 10px;
+color: var(--muted)
+}
+.site-footer .footer-socials {
+display: flex;
+align-items: center;
+gap: 20px
+}
+.footer-socials-label {
+font-size: 12px;
+color: var(--accent-ink);
+letter-spacing: .06em
+}
+.footer-socials ul {
+display: flex;
+align-items: center;
+gap: 21px;
+list-style: none;
+margin: 0;
+padding: 0;
+color: #655f55;
+font-size: 11px
+}
+.footer-socials li {
+white-space: nowrap
+}
+/* Plain text until real profile destinations are supplied. */
+.footer-socials li>span {
+cursor: default
+}
+.footer-socials a {
+padding: 12px 0;
+transition: color .2s
+}
+.footer-socials a:hover {
+color: var(--accent)
+}
+@media(max-width:760px) {
+.works-panel .study-finale {
+top: 31%;
+left: 49%;
+right: 5%
+}
+.study-finale h2 {
+font-size: clamp(29px, 7vw, 48px);
+margin-top: 12px
+}
+.study-finale>.micro {
+font-size: 7px;
+letter-spacing: .035em
+}
+.study-finale-note {
+font-size: 11px;
+line-height: 1.55;
+margin-top: 16px
+}
+.study-finale #liquid-contact-frame {
+margin-top: 0;
+height: 112px
+}
+.finale-conversation {
+align-items: flex-start;
+gap: 7px;
+font-size: 10px;
+line-height: 1.6;
+margin-top: 0;
+max-width: 24ch
+}
+.finale-conversation>span {
+width: 12px;
+margin-top: 8px
+}
+body:not(.static-page) .site-footer {
+min-height: 105px;
+padding: 14px 24px 18px;
+display: flex;
+align-items: start;
+justify-content: center;
+flex-direction: column;
+gap: 13px
+}
+.site-footer .footer-signoff {
+width: 100%;
+flex-direction: row;
+align-items: baseline;
+justify-content: space-between;
+gap: 10px
+}
+.footer-signoff-name {
+font-size: 16px
+}
+.footer-signoff .micro {
+font-size: 11px
+}
+.footer-year {
+margin-left: 5px
+}
+.site-footer .footer-socials {
+width: 100%;
+gap: 10px
+}
+.footer-socials-label {
+font-size: 11px
+}
+.footer-socials ul {
+flex: 1;
+justify-content: space-between;
+gap: 9px;
+font-size: 10px
+}
+}
+@media(max-height:640px) and (min-width:761px) {
+.works-panel .study-finale {
+top: 28%
+}
+.study-finale h2 {
+font-size: clamp(38px, 5vw, 62px)
+}
+.study-finale-note {
+margin-top: 12px;
+font-size: 12px
+}
+.study-finale #liquid-contact-frame {
+height: 135px;
+width: 300px
+}
+.finale-conversation {
+font-size: 11px
+}
+}
+body.static-page .study-finale {
+inset: auto
+}
+body.static-page .finale-conversation {
+margin: 0 auto;
+justify-content: center
+}
+body.static-page .site-footer {
+position: relative
+}
+body.static-page .static-contact-portrait {
+filter: drop-shadow(8px 12px 13px #51433118)
+}

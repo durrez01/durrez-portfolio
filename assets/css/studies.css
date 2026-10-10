@@ -1,0 +1,617 @@
+
+/* V11 / warm, tactile, playful, spacious. Retain Bricolage/Geist, mineral
+paper #efebe3, ink #22231f and terracotta #c8552b; existing weighted clock. */
+.works-panel {
+overflow: hidden
+}
+.works-panel .section-kicker {
+top: 15%;
+z-index: 8
+}
+.works-panel .works-heading {
+top: 23%;
+left: var(--gutter);
+right: auto;
+display: block;
+max-width: 440px;
+z-index: 8;
+pointer-events: none;
+will-change: opacity, transform
+}
+.works-panel .works-heading h2 {
+font-size: clamp(46px, 5.2vw, 88px)
+}
+.works-panel .works-heading p {
+font-size: 14px;
+line-height: 1.6;
+margin: 22px 0 0;
+max-width: 285px
+}
+#works-guide,
+#work-hitareas {
+display: none !important
+}
+.study-rail {
+position: absolute;
+inset: auto var(--gutter) 5%;
+display: flex;
+align-items: end;
+justify-content: space-between;
+gap: 22px;
+z-index: 10
+}
+.study-current {
+min-width: 260px
+}
+.study-current>.micro {
+color: var(--muted);
+font-size: 10px
+}
+#study-number {
+color: #a83f1d
+}
+#study-category {
+margin-left: 18px
+}
+#study-open {
+display: flex;
+align-items: center;
+gap: 24px;
+padding: 10px 0 0;
+min-height: 44px;
+text-align: left;
+font: 500 clamp(22px, 2.2vw, 34px)/1.1 var(--display);
+letter-spacing: -.025em
+}
+#study-open>span:last-child {
+font: 22px var(--body);
+color: var(--accent)
+}
+.study-index {
+display: flex;
+gap: 4px
+}
+.study-index button {
+min-width: 44px;
+height: 44px;
+font: 11px 'IBM Plex Mono';
+border-radius: 50%;
+transition: background .22s, color .22s
+}
+.study-index button:hover {
+background: #22231f0b
+}
+.study-index button[aria-current=true] {
+background: var(--ink);
+color: var(--paper)
+}
+.study-scroll {
+display: flex;
+align-items: center;
+gap: 18px;
+font-size: 9px;
+color: var(--muted);
+min-height: 44px
+}
+.study-scroll>span {
+font: 28px var(--body);
+color: var(--accent)
+}
+.study-finale {
+position: absolute;
+top: 69%;
+left: var(--gutter);
+right: var(--gutter);
+text-align: center;
+z-index: 10;
+opacity: 0;
+will-change: transform, opacity
+}
+.study-finale>.micro {
+color: var(--muted);
+font-size: 10px
+}
+.study-finale h2 {
+font: 500 clamp(34px, 4.4vw, 72px)/1.03 var(--display);
+letter-spacing: -.035em;
+margin-top: 13px
+}
+.study-start {
+display: inline-flex;
+align-items: center;
+justify-content: space-between;
+gap: 50px;
+min-height: 48px;
+background: var(--ink);
+color: var(--paper);
+padding: 14px 22px;
+border-radius: 3px;
+font-size: 13px;
+margin-top: 23px;
+transition: background .2s, transform .2s
+}
+.study-start:hover {
+background: var(--accent);
+transform: translateY(-2px)
+}
+.study-start span {
+font-size: 21px
+}
+.static-contact-portrait {
+display: none
+}
+.invitation {
+padding: 30px var(--gutter);
+background: var(--paper)
+}
+.invitation-bottom {
+border: 0;
+padding: 0
+}
+@media(max-width:1000px) {
+.study-scroll {
+display: none
+}
+.study-current {
+min-width: 0
+}
+.study-index {
+gap: 0
+}
+.study-index button {
+min-width: 38px
+}
+}
+@media(max-width:760px) {
+.works-panel .section-kicker {
+top: 14%
+}
+.works-panel .works-heading {
+top: 20%;
+left: 24px;
+max-width: 230px
+}
+.works-panel .works-heading h2 {
+font-size: 46px
+}
+.works-panel .works-heading p {
+font-size: 12px;
+max-width: 200px;
+margin-top: 14px
+}
+.study-rail {
+bottom: max(24px, env(safe-area-inset-bottom));
+display: block
+}
+.study-current>.micro {
+font-size: 9px
+}
+#study-category {
+margin-left: 12px
+}
+#study-open {
+font-size: 27px;
+padding-top: 6px
+}
+.study-index {
+margin: 13px -6px 0;
+justify-content: space-between;
+gap: 0
+}
+.study-index button {
+min-width: 36px;
+min-height: 44px;
+border-radius: 3px
+}
+.study-finale {
+top: 69%;
+left: 20px;
+right: 20px
+}
+.study-finale h2 {
+font-size: clamp(29px, 8vw, 43px);
+margin-top: 10px
+}
+.study-finale>.micro {
+font-size: 8px
+}
+.study-start {
+margin-top: 18px
+}
+}
+@media(max-height:640px) {
+.study-finale {
+top: 65%
+}
+.study-finale h2 {
+font-size: 33px
+}
+.study-start {
+margin-top: 12px
+}
+.study-finale>.micro {
+display: none
+}
+}
+body.static-page .study-rail {
+display: none
+}
+body.static-page .static-contact-portrait {
+display: block;
+width: min(300px, 65vw);
+margin: 85px auto 0;
+border: 7px solid #f4efe5;
+border-radius: 10px;
+box-shadow: 10px 20px 35px #22231f22
+}
+body.static-page .study-finale {
+position: relative;
+inset: auto;
+opacity: 1;
+transform: none;
+margin: 30px auto 0
+}
+body.static-page .works-panel {
+padding-bottom: 65px
+}
+@media(prefers-reduced-motion:reduce) {
+.study-start,
+.study-index button {
+transition: none
+}
+.study-start:hover {
+transform: none
+}
+}
+/* Paper margins keep the reading controls legible as prints pass close by. */
+.works-panel:before,
+.works-panel:after {
+content: '';
+position: absolute;
+left: 0;
+right: 0;
+pointer-events: none;
+z-index: 7
+}
+.works-panel:before {
+top: 0;
+height: 27%;
+background: linear-gradient(var(--paper) 20%, #efebe3ed 58%, #efebe300)
+}
+.works-panel:after {
+bottom: 0;
+height: 19%;
+background: linear-gradient(#efebe300, var(--paper) 78%)
+}
+.works-panel .works-heading {
+top: 20%;
+left: 50%;
+right: auto;
+max-width: none;
+width: 90%;
+text-align: center;
+translate: -50% 0
+}
+.works-panel .works-heading h2 {
+font-size: clamp(32px, 3.5vw, 58px);
+line-height: 1
+}
+.works-panel .works-heading h2 br {
+display: none
+}
+.works-panel .works-heading p {
+max-width: none;
+font-size: 12px;
+margin: 12px auto 0
+}
+.works-panel .works-heading p br {
+display: none
+}
+@media(max-width:760px) {
+.works-panel .works-heading {
+top: 20%;
+width: 85%
+}
+.works-panel .works-heading h2 {
+font-size: 35px
+}
+.works-panel .works-heading h2 br {
+display: block
+}
+.works-panel .works-heading p {
+display: none
+}
+.works-panel:after {
+height: 27%
+}
+}
+body.static-page .works-panel:before,
+body.static-page .works-panel:after {
+display: none
+}
+body.static-page .works-panel {
+display: flex;
+flex-direction: column;
+padding-top: 160px
+}
+body.static-page .works-panel .works-heading {
+position: relative;
+inset: auto;
+translate: none;
+transform: none;
+opacity: 1;
+width: auto;
+text-align: left;
+margin-bottom: 20px
+}
+body.static-page #static-works {
+order: 1
+}
+body.static-page .static-contact-portrait {
+order: 2
+}
+body.static-page .study-finale {
+order: 3
+}
+@media(max-width:760px) {
+body.static-page .works-panel {
+padding-top: 140px
+}
+}
+@media(max-width:760px) {
+.works-panel .works-heading {
+top: 17%
+}
+.works-panel .works-heading h2 {
+font-size: 32px
+}
+}
+/* Sixteen-card tunnel: a centered editorial opening, then accelerating depth. */
+#scroll-story {
+height: 2860vh;
+height: 2860svh
+}
+.works-panel .works-heading {
+top: 48%;
+width: min(620px, 54vw);
+translate: -50% -50%
+}
+.works-panel .works-heading h2 {
+font-size: clamp(64px, 7.2vw, 118px);
+line-height: .94;
+letter-spacing: -.055em
+}
+.works-panel .works-heading h2 br {
+display: block
+}
+.works-panel .works-heading p {
+font-size: clamp(13px, 1.2vw, 18px);
+line-height: 1.5;
+max-width: 30ch;
+margin: 26px auto 0
+}
+.works-panel .works-heading p br {
+display: block
+}
+.study-index {
+max-width: 52vw;
+flex-wrap: wrap;
+justify-content: center;
+gap: 0
+}
+.study-index button {
+min-width: 30px;
+width: 30px;
+height: 36px;
+font-size: 9px
+}
+@media(max-width:1000px) {
+.study-index {
+max-width: 48vw
+}
+.study-index button {
+min-width: 28px;
+width: 28px
+}
+}
+@media(max-width:760px) {
+.works-panel .works-heading {
+top: 45%;
+width: 90%
+}
+.works-panel .works-heading h2 {
+font-size: clamp(52px, 12vw, 76px)
+}
+.works-panel .works-heading p {
+display: block;
+font-size: 13px;
+margin-top: 20px
+}
+.study-index {
+max-width: none;
+display: grid;
+grid-template-columns: repeat(8, 1fr);
+margin-top: 12px
+}
+.study-index button {
+width: 100%;
+min-width: 0;
+height: 34px;
+min-height: 34px
+}
+.study-current>.micro {
+font-size: 8px
+}
+#study-open {
+font-size: 23px
+}
+}
+body.static-page #scroll-story {
+height: auto
+}
+body.static-page .works-panel .works-heading {
+translate: none;
+width: auto
+}
+.works-panel .works-heading {
+isolation: isolate
+}
+.works-panel .works-heading:before {
+content: '';
+position: absolute;
+z-index: -1;
+inset: -12% -12%;
+background: radial-gradient(ellipse, #efebe3ed 0%, #efebe3bd 40%, #efebe300 72%);
+filter: blur(15px)
+}
+body.static-page .works-panel .works-heading:before {
+display: none
+}
+/* A masked word entrance waits for the cards to finish facing the viewer. */
+/* Allow glyph overhang beyond the tightly tracked word's advance box.
+Matching negative margins preserve spacing and the centered composition. */
+.reveal-word-mask {
+display: inline-block;
+overflow: hidden;
+vertical-align: bottom;
+padding: .08em .12em .10em;
+margin: -.08em -.12em -.10em
+}
+.reveal-word {
+display: inline-block;
+will-change: transform, opacity
+}
+.reveal-line {
+white-space: nowrap
+}
+.study-rail {
+justify-content: space-between
+}
+.works-panel .study-finale {
+top: 41%;
+left: 54%;
+right: 6%;
+text-align: left
+}
+.study-finale h2 {
+font-size: clamp(46px, 5.3vw, 86px);
+line-height: .96
+}
+#liquid-contact-frame {
+display: block;
+width: min(380px, 100%);
+height: 172px;
+border: 0;
+background: transparent;
+margin: 16px 0 0 -20px
+}
+@media(max-width:760px) {
+.works-panel .study-finale {
+top: 46%;
+left: 49%;
+right: 4%
+}
+.study-finale h2 {
+font-size: clamp(29px, 7vw, 48px)
+}
+.study-finale>.micro {
+font-size: 7px;
+max-width: 20ch
+}
+#liquid-contact-frame {
+width: 100%;
+height: 125px;
+margin: 7px 0 0 -8px
+}
+.study-rail {
+bottom: 5%
+}
+.works-panel .works-heading h2 {
+font-size: clamp(48px, 11vw, 76px)
+}
+}
+body.static-page .reveal-word {
+transform: none !important;
+opacity: 1 !important
+}
+body.static-page .works-panel .study-finale {
+inset: auto;
+text-align: center
+}
+body.static-page #liquid-contact-frame {
+margin: 14px auto 0
+}
+body.static-page .static-contact-portrait {
+border: 0;
+box-shadow: none
+}
+#liquid-contact-frame {
+height: 190px;
+margin-top: 0
+}
+@media(max-width:760px) {
+#liquid-contact-frame {
+height: 125px
+}
+}
+/* The invitation and footer share the final viewport, with no trailing page. */
+.works-panel .study-finale {
+top: 35%;
+left: 54%;
+right: 6%
+}
+.study-finale-note {
+font-size: clamp(13px, 1.1vw, 17px);
+line-height: 1.5;
+color: var(--muted);
+margin-top: 20px;
+max-width: 29ch
+}
+body:not(.static-page) .invitation,
+body:not(.static-page) .site-footer {
+position: fixed;
+left: 0;
+right: 0;
+z-index: 20;
+opacity: var(--closing-progress, 0);
+visibility: hidden;
+transform: translateY(calc((1 - var(--closing-progress, 0))*12px))
+}
+body:not(.static-page) .invitation {
+bottom: 65px;
+padding: 16px var(--gutter);
+background: transparent
+}
+body:not(.static-page) .site-footer {
+bottom: 0;
+min-height: 65px;
+padding: 18px var(--gutter);
+background: var(--paper);
+border-top: 1px solid var(--line)
+}
+@media(max-width:760px) {
+.works-panel .study-finale {
+top: 34%;
+left: 49%;
+right: 5%
+}
+.study-finale-note {
+font-size: 12px;
+margin-top: 14px
+}
+body:not(.static-page) .invitation {
+bottom: 79px;
+padding: 12px 24px
+}
+body:not(.static-page) .site-footer {
+min-height: 79px;
+padding: 16px 24px;
+gap: 8px
+}
+}
+body.static-page .works-panel .study-finale {
+inset: auto
+}
+body.static-page .study-finale-note {
+margin: 20px auto 0
+}

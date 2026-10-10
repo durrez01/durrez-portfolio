@@ -1,0 +1,337 @@
+
+/* Individual studies share a quiet frame; their notes choose their own rhythm. */
+#project-dialog {
+--study-accent: #a95b37;
+background: #f0ece4;
+overflow: hidden;
+height: min(820px, 92dvh)
+}
+#project-dialog[open] {
+grid-template-columns: 50% 50%
+}
+#project-dialog .project-visual {
+min-height: 0;
+margin: 22px;
+overflow: hidden;
+border-radius: 3px
+}
+#project-dialog .project-copy {
+min-width: 0;
+min-height: 0;
+overflow-y: auto;
+overscroll-behavior: contain;
+padding: 78px 42px 24px 22px;
+scrollbar-width: thin;
+scrollbar-color: var(--study-accent) transparent;
+background: linear-gradient(150deg, color-mix(in srgb, var(--study-accent) 7%, transparent), transparent 62%)
+}
+#project-category {
+color: var(--study-accent);
+letter-spacing: .08em
+}
+#project-dialog .project-copy h2 {
+font-size: clamp(32px, 3.5vw, 54px);
+line-height: 1.01;
+margin-top: 15px;
+letter-spacing: -.035em
+}
+.project-title-mask {
+display: inline-block;
+overflow: hidden;
+vertical-align: bottom;
+padding: 0 .04em .1em;
+margin: 0 -.04em -.1em
+}
+.project-title-mask>span {
+display: inline-block
+}
+#project-dialog .project-lead {
+font-size: clamp(17px, 1.6vw, 21px);
+line-height: 1.35;
+margin-top: 20px;
+max-width: 30ch;
+color: var(--study-accent)
+}
+#project-dialog #project-description {
+font-size: 16px;
+line-height: 1.65;
+margin-top: 16px;
+max-width: 49ch
+}
+#project-notes {
+margin-top: 22px;
+padding-top: 15px;
+border-top: 1px solid color-mix(in srgb, var(--study-accent) 25%, transparent)
+}
+#project-notes h3 {
+font-weight: 400;
+font-size: 8px;
+color: var(--study-accent);
+margin-bottom: 13px
+}
+.study-fragments {
+margin: 0;
+display: grid;
+gap: 9px;
+font-size: 13px;
+line-height: 1.4
+}
+.study-fragment span {
+display: block;
+font: 9px 'IBM Plex Mono';
+text-transform: uppercase;
+color: var(--study-accent);
+margin-bottom: 4px
+}
+.study-fragment strong {
+font-weight: 400
+}
+[data-layout=sequence] .study-fragments {
+counter-reset: steps
+}
+[data-layout=sequence] .study-fragment {
+counter-increment: steps;
+display: flex;
+align-items: baseline;
+gap: 12px
+}
+[data-layout=sequence] .study-fragment:before {
+content: '0' counter(steps);
+font: 9px 'IBM Plex Mono';
+color: var(--study-accent)
+}
+[data-layout=sequence] .study-fragment span {
+min-width: 51px
+}
+[data-layout=weave] .study-fragments,
+[data-layout=threshold] .study-fragments {
+grid-template-columns: 1fr 1fr;
+gap: 20px
+}
+[data-layout=weave] .study-fragment {
+padding-left: 12px;
+border-left: 2px solid var(--study-accent)
+}
+[data-layout=threshold] .study-fragment+div {
+border-left: 1px solid var(--line);
+padding-left: 20px
+}
+[data-layout=atlas] .study-fragment {
+display: flex;
+gap: 18px;
+margin-left: calc(var(--fragment-index)*13px)
+}
+[data-layout=atlas] .study-fragment span {
+min-width: 42px
+}
+[data-layout=specimen] .study-fragments {
+grid-template-columns: repeat(3, 1fr);
+gap: 14px;
+font-size: 12px
+}
+[data-layout=letter] .study-fragments {
+display: flex;
+align-items: center;
+gap: 24px
+}
+[data-layout=letter] .study-fragment:first-child {
+font: 500 74px/.9 var(--display);
+color: var(--study-accent)
+}
+[data-layout=letter] .study-fragment:last-child {
+max-width: 23ch;
+font-style: italic
+}
+[data-layout=fragments] .study-fragment {
+margin-left: calc(var(--fragment-index)*22px)
+}
+[data-layout=fragments] .study-fragment:nth-child(2) {
+color: var(--study-accent)
+}
+[data-layout=spectrum] .study-fragments {
+display: flex;
+justify-content: space-between;
+gap: 10px;
+padding-top: 12px;
+border-top: 3px solid;
+border-image: linear-gradient(90deg, #ac6950, #b49a50, #6f947c, #63769d) 1;
+font-size: 12px
+}
+[data-layout=quote] .study-fragments {
+font: italic 21px/1.35 Georgia, serif;
+color: var(--study-accent);
+max-width: 29ch
+}
+#project-dialog #project-detail {
+font-size: 14px;
+line-height: 1.6;
+margin-top: 17px;
+border: 0;
+padding: 0;
+max-width: 48ch
+}
+#project-dialog .project-nav {
+padding-top: 22px;
+gap: 12px;
+min-height: 66px;
+flex-shrink: 0
+}
+#project-dialog .project-nav>button {
+display: grid;
+place-items: center;
+flex: none;
+border-color: color-mix(in srgb, var(--study-accent) 35%, transparent);
+color: var(--study-accent);
+background: color-mix(in srgb, var(--study-accent) 5%, transparent);
+transition: background .3s, color .3s, box-shadow .3s, transform .3s cubic-bezier(.22, 1, .36, 1)
+}
+#project-dialog .project-nav>button:is(:hover, :focus-visible) {
+color: #fffaf0;
+background: var(--study-accent);
+box-shadow: 0 5px 12px color-mix(in srgb, var(--study-accent) 24%, transparent);
+transform: translateY(-2px)
+}
+#project-dialog .project-nav>button:active {
+transform: translateY(0) scale(.95)
+}
+@media(max-height:780px) and (min-width:761px) {
+#project-dialog .project-copy {
+padding-top: 64px;
+padding-right: 30px
+}
+#project-dialog .project-copy h2 {
+font-size: clamp(30px, 3.4vw, 45px);
+margin-top: 10px
+}
+#project-dialog .project-lead {
+font-size: 17px;
+margin-top: 14px
+}
+#project-dialog #project-description {
+font-size: 12px;
+line-height: 1.5;
+margin-top: 12px
+}
+#project-notes {
+margin-top: 15px;
+padding-top: 12px
+}
+.study-fragments {
+gap: 7px;
+font-size: 12px
+}
+#project-dialog #project-detail {
+margin-top: 12px
+}
+#project-dialog .project-nav {
+padding-top: 16px;
+min-height: 60px
+}
+}
+@media(max-width:760px) {
+#project-dialog {
+overflow-y: auto;
+width: 94vw;
+height: 92dvh
+}
+#project-dialog[open] {
+display: block
+}
+#project-dialog .project-visual {
+height: 36dvh;
+min-height: 230px;
+margin: 60px 18px 0
+}
+#project-dialog .project-visual>img,
+#project-dialog .project-visual>video {
+object-fit: contain;
+background: #e5dfd3
+}
+#project-dialog .project-copy {
+overflow: visible;
+padding: 25px 24px 24px
+}
+#project-dialog .project-copy h2 {
+font-size: 38px
+}
+#project-dialog .project-nav {
+margin-top: 20px
+}
+#project-dialog .project-lead {
+font-size: 19px
+}
+.study-fragments {
+font-size: 12px
+}
+[data-layout=specimen] .study-fragments {
+gap: 10px;
+font-size: 11px
+}
+}
+@media(prefers-reduced-motion:reduce) {
+#project-dialog .project-nav>button {
+transition: none
+}
+#project-dialog .project-nav>button:is(:hover, :focus-visible) {
+transform: none
+}
+}
+/* The paper grows from the same moving print; both settle on one beat. */
+#project-dialog[open] {
+animation: none
+}
+#project-dialog.detail-opening {
+overflow: hidden;
+will-change: transform, opacity
+}
+#project-dialog.detail-opening::backdrop {
+background: rgb(34 35 31 / calc(.4 * var(--backdrop-progress, 0)));
+backdrop-filter: blur(calc(12px * var(--backdrop-progress, 0)))
+}
+#project-dialog.detail-opening .project-copy {
+pointer-events: none
+}
+.detail-flight-layer {
+position: fixed;
+inset: 0;
+width: 100vw;
+height: 100dvh;
+max-width: none;
+max-height: none;
+margin: 0;
+padding: 0;
+border: 0;
+background: transparent;
+overflow: hidden;
+pointer-events: none
+}
+.detail-flight-layer::backdrop {
+background: transparent;
+pointer-events: none
+}
+.detail-flight-print {
+position: absolute;
+left: 0;
+top: 0;
+transform-origin: 0 0;
+border-radius: 5px;
+overflow: hidden;
+background: #eee8dc;
+box-shadow: 0 16px 36px #342a202c, 0 2px 4px #342a201c;
+will-change: transform, opacity
+}
+.detail-flight-print>img,
+.detail-flight-print>canvas {
+display: block;
+position: absolute;
+inset: 0;
+width: 100%;
+height: 100%;
+object-fit: cover
+}
+@media(max-width:760px) {
+.detail-flight-print>img {
+object-fit: contain;
+background: #e5dfd3
+}
+}

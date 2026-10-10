@@ -1,0 +1,155 @@
+
+/* Adapted from ThreeUI Sign Up Button: chrome rim, glass inset, lifting letter.
+https://threeui.com/buttons/sign-up-button — native button retains contact flow. */
+.thinking-contact {
+--mail-ease: cubic-bezier(.22, .61, .36, 1);
+position: relative;
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex: none;
+width: 170px;
+height: 44px;
+padding: 5px 5px 5px 16px;
+border: 1px solid #81776d;
+border-radius: 11px;
+isolation: isolate;
+cursor: pointer;
+color: #fff5e8;
+background: linear-gradient(180deg, #fff9ef 0%, #bcb3a8 5%, #61574d 12%, #40372e 84%, #bbb2a6 95%, #eee7db 100%);
+box-shadow: 0 4px 9px #45332320, inset 0 0 0 1px #fff8eb80;
+transition: transform .25s var(--mail-ease), box-shadow .3s, opacity .3s;
+}
+.thinking-contact::before {
+content: '';
+position: absolute;
+inset: 2px;
+border-radius: 8px;
+z-index: -1;
+background: linear-gradient(180deg, #e8a573 0%, #ce7748 8%, #bb5c30 43%, #a44925 79%, #8d3d21 100%);
+box-shadow: inset 0 1px 1px #fff3d7b0, inset 0 -1px 2px #54200c80;
+}
+.thinking-contact__label {
+font: 500 10px/1 'IBM Plex Mono', monospace;
+letter-spacing: .065em;
+white-space: nowrap;
+text-shadow: 0 1px 1px #62220965;
+}
+.thinking-contact__glass {
+position: relative;
+display: block;
+width: 32px;
+height: 32px;
+flex: none;
+overflow: hidden;
+border-radius: 8px;
+border: 1px solid #632b14;
+background: radial-gradient(ellipse at 50% 110%, #ffdf8d 0%, #ea902f 28%, #85411b 55%, #3a241d 84%);
+box-shadow: 0 1px 0 #ffd4a6a0, inset 0 1px 2px #24100790, inset 0 -2px 3px #ffb652b0;
+transition: box-shadow .4s var(--mail-ease), filter .4s;
+}
+.thinking-contact__glass::before {
+content: '';
+position: absolute;
+inset: 1px 2px auto;
+height: 45%;
+border-radius: 6px 6px 50% 50%;
+background: linear-gradient(180deg, #fffae98a, #fff6dc08);
+pointer-events: none;
+}
+.thinking-contact__glass::after {
+content: '';
+position: absolute;
+inset: 1px;
+border-radius: 6px;
+border: 1px solid #ffe0a04d;
+pointer-events: none;
+}
+.thinking-contact__glass svg {
+position: absolute;
+inset: 0;
+width: 100%;
+height: 100%;
+overflow: visible;
+fill: none;
+stroke: #fff6de;
+stroke-width: 1.65;
+stroke-linecap: round;
+stroke-linejoin: round
+}
+.thinking-contact__mail {
+transform: translate(42px, 43px) scale(1.65)
+}
+.thinking-contact__envelope {
+fill: #733815
+}
+.thinking-contact__letter rect {
+fill: #f9dfae;
+stroke: #ffe9c9
+}
+.thinking-contact__letter path {
+stroke: #995328;
+stroke-width: 1.2
+}
+.thinking-contact__letter {
+transition: transform .5s cubic-bezier(.34, 1.45, .64, 1)
+}
+.thinking-contact__open {
+transform-origin: 0 -7.5px;
+transform: scaleY(0);
+opacity: 0;
+transition: transform .35s var(--mail-ease), opacity .2s
+}
+.thinking-contact__closed {
+transition: opacity .2s
+}
+.thinking-contact:is(:hover, :focus-visible) {
+transform: translateY(-1px);
+box-shadow: 0 5px 12px #77371630, inset 0 0 0 1px #fff8eb80
+}
+.thinking-contact:is(:hover, :focus-visible) .thinking-contact__glass {
+filter: brightness(1.15);
+box-shadow: 0 0 7px #ffbd6560, inset 0 -2px 4px #ffe0a4c0
+}
+.thinking-contact:is(:hover, :focus-visible) .thinking-contact__letter {
+transform: translateY(-8px)
+}
+.thinking-contact:is(:hover, :focus-visible) .thinking-contact__open {
+transform: scaleY(1);
+opacity: 1
+}
+.thinking-contact:is(:hover, :focus-visible) .thinking-contact__closed {
+opacity: 0
+}
+.thinking-contact:active {
+transform: translateY(1px) scale(.985);
+box-shadow: 0 1px 3px #45332320
+}
+.thinking-contact:focus-visible {
+outline: 2px solid var(--accent);
+outline-offset: 4px
+}
+@media(max-width:760px) {
+.thinking-contact {
+width: 145px;
+padding-left: 11px
+}
+.thinking-contact__label {
+font-size: 9px;
+letter-spacing: .025em
+}
+}
+@media(prefers-reduced-motion:reduce) {
+.thinking-contact,
+.thinking-contact * {
+transition: none !important
+}
+.thinking-contact:is(:hover, :focus-visible),
+.thinking-contact:active {
+transform: none
+}
+}
+body.static-mode .thinking-contact,
+body.static-mode .thinking-contact * {
+transition: none !important
+}
