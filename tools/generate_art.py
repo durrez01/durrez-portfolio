@@ -42,6 +42,17 @@ def mono(size):
     return font("IBMPlexMono-400.ttf", size)
 
 
+def heavy(size):
+    """Display face for the big service names. Bricolage is a variable font;
+    fall back to Geist when this FreeType build cannot set the weight axis."""
+    try:
+        f = font("Bricolage-200 800.ttf", size)
+        f.set_variation_by_axes([700])
+        return f
+    except Exception:
+        return font("Geist-600.ttf", size)
+
+
 def mix(a, b, t):
     return tuple(round(a[i] + (b[i] - a[i]) * t) for i in range(3))
 
@@ -98,7 +109,7 @@ def shadow(layer, blur, offset, opacity=0.18):
     return sh.transform(layer.size, Image.AFFINE, (1, 0, -offset[0], 0, 1, -offset[1]))
 
 
-def plate(size, seed, accent, motif, caption=None, index=None, ground="paper"):
+def plate(size, seed, accent, motif, caption=None, index=None, ground="paper", services=None):
     """Compose one artwork plate at SS scale, then downsample."""
     theme(ground, accent)
     dark = ground == "dark"
@@ -124,6 +135,26 @@ def plate(size, seed, accent, motif, caption=None, index=None, ground="paper"):
         f = mono(26 * SS)
         tw = marks.textlength(caption, font=f)
         marks.text((w - m - tw, h - m - 74 * SS), caption, font=f, fill=accent + (235,))
+    if services:
+        # The stack of service names is the card's loudest element; each line
+        # autofits the column and a paper-coloured halo keeps it legible over
+        # whatever the motif left in the lower third.
+        maxw = w - 2 * m
+        lines = []
+        for name in services:
+            size_px = 118 * SS
+            f = heavy(size_px)
+            tw = marks.textlength(name, font=f)
+            if tw > maxw:
+                size_px = max(40 * SS, int(size_px * maxw / tw))
+                f = heavy(size_px)
+            lines.append((name, f, size_px))
+        y = h - m - 118 * SS - sum(int(sz * 1.08) for _, _, sz in lines)
+        for i, (name, f, sz) in enumerate(lines):
+            fill = accent + (244,) if i == 1 else INK + (240,)
+            marks.text((m, y), name, font=f, fill=fill,
+                       stroke_width=3 * SS, stroke_fill=PAPER + (170,))
+            y += int(sz * 1.08)
 
     out = base.convert("RGB").resize(size, Image.LANCZOS)
     out = grain(out, 5, seed)
@@ -601,15 +632,24 @@ def build_guide(size, seed, accent):
 # ---------------------------------------------------------------------- build
 
 WORK_PLATES = [
-    # motif, accent, caption, index, ground — grounds alternate so the carousel has rhythm
-    (m_camera_grid, (214, 122, 74), "500+ streams", "Study 01", "dark"),
-    (m_topology, (73, 98, 107), "multi-site", "Study 02", "paper"),
-    (m_transport, (122, 164, 224), "-40% latency", "Study 03", "dark"),
-    (m_overlays, (146, 112, 61), "inference", "Study 04", "paper"),
-    (m_pipeline, (226, 126, 96), "redis / bullmq", "Study 05", "dark"),
-    (m_stack, (100, 104, 86), "rest api", "Study 06", "paper"),
-    (m_schedule, (123, 88, 122), "recurrence", "Study 07", "paper"),
-    (m_badge, (238, 128, 60), "aws certified", "Study 08", "dark"),
+    # motif, accent, caption, index, ground, services — ordered to match the
+    # cards in assets/js/projects.js; grounds alternate so the carousel has rhythm
+    (m_camera_grid, (214, 122, 74), "1,000+ cameras", "Study 01", "dark",
+     ("Node.js", "FFmpeg", "MediaMTX")),
+    (m_overlays, (146, 112, 61), "inference", "Study 02", "paper",
+     ("WebRTC", "Redis", "BullMQ")),
+    (m_schedule, (123, 88, 122), "10,000 doctors", "Study 03", "paper",
+     ("Express", "PostgreSQL", "Keycloak")),
+    (m_topology, (73, 98, 107), "book circulation", "Study 04", "dark",
+     ("MongoDB", "Mongoose", "React")),
+    (m_transport, (122, 164, 224), "-40% latency", "Study 05", "dark",
+     ("PostgreSQL", "Redis", "FFmpeg")),
+    (m_pipeline, (226, 126, 96), "audit trails", "Study 06", "paper",
+     ("Keycloak", "RBAC", "SSO + 2FA")),
+    (m_stack, (100, 104, 86), "consoles", "Study 07", "paper",
+     ("React", "Redux", "Next.js")),
+    (m_badge, (238, 128, 60), "certified", "Study 08", "dark",
+     ("AWS", "Oracle", "Docker")),
 ]
 
 PRACTICE_PLATES = [
@@ -627,13 +667,18 @@ PRACTICE_PLATES = [
 
 
 def main():
+    work_only = "--work-only" in os.sys.argv
+
     for sub in ("work", "practice", "portrait", "identity", "guide"):
         os.makedirs(os.path.join(OUT, sub), exist_ok=True)
 
-    for i, (motif, accent, caption, index, ground) in enumerate(WORK_PLATES, 1):
-        p = plate(WORK, 1000 + i, accent, motif, caption, index, ground)
+    for i, (motif, accent, caption, index, ground, services) in enumerate(WORK_PLATES, 1):
+        p = plate(WORK, 1000 + i, accent, motif, caption, index, ground, services)
         p.save(os.path.join(OUT, "work", f"{i:02d}.jpg"), quality=88, optimize=True, progressive=True)
         print("work", i)
+
+    if work_only:
+        return
 
     for i, (motif, accent, caption, ground) in enumerate(PRACTICE_PLATES, 1):
         p = plate(PRACTICE, 2000 + i, accent, motif, caption, f"{i:02d}", ground)
